@@ -1,148 +1,135 @@
 import { useState } from "react";
 import { Link, NavLink } from "react-router-dom";
-import { Menu, X, Home, PackageSearch, User } from "lucide-react";
+import { Menu, X, Home, PackageSearch, User, Package } from "lucide-react";
 
 function Navbar() {
     const [menuOpen, setMenuOpen] = useState(false);
 
     return (
         <>
-            <nav className="fixed top-0 z-50 w-full bg-[#3F000F] shadow-md">
-                <div className="mx-auto flex h-20 max-w-7xl items-center justify-between px-5">
+            <div className="fixed top-0 z-50 w-full bg-[#132142] px-6 py-3 text-sm text-white sm:px-10 lg:px-14">
+                <div className="mx-auto flex max-w-7xl items-center justify-between">
+                    <p>
+                        24/7 Global Priority Dispatch{" "}
+                        <span className="text-[#E0854C]">
+                            • 1-800-TRACKLY
+                        </span>
+                    </p>
 
-                    <Link to="/" className="flex flex-col">
-                        <img
-                            src="/images/logoss.png"
-                            alt="Trackly"
-                            className="h-20 w-auto object-contain"
-                        />
+                    <div className="hidden items-center gap-7 sm:flex">
+                        <span>Quick Shipment Hotline: +1 (800) 872-2559</span>
+
+                        <span className="font-semibold text-[#FA6305]">
+                            OPERATING 24/7
+                        </span>
+                    </div>
+                </div>
+            </div>
+
+            <nav className="fixed top-10 z-50 w-full shadow-sm bg-white">
+                <div className="mx-auto flex max-w-7xl items-center justify-between px-6 py-4 sm:px-10 lg:px-14">
+
+                    <Link to="/" className="flex items-center gap-3">
+                        <div className="flex h-11 w-11 items-center justify-center rounded-xl bg-[#6b0717]">
+                            <Package className="h-6 w-6 text-white" />
+                        </div>
+
+                        <div>
+                            <h1 className="text-2xl font-bold tracking-wide text-[#5d0715]">
+                                TRACKLY
+                            </h1>
+
+                            <p className="text-[9px] font-semibold tracking-widest text-gray-500">
+                                SHIP. TRACK. DELIVER.
+                            </p>
+                        </div>
                     </Link>
 
-                    <div className="hidden items-center gap-8 lg:flex">
-                        <NavLink
+                    <div className="hidden items-center gap-9 lg:flex">
+
+                        <Link
                             to="/"
-                            className="text-white hover:text-[#D98A98]"
+                            className="text-base font-semibold text-[#6b0717]"
                         >
                             Home
-                        </NavLink>
+                        </Link>
 
-                        <NavLink
+                        <Link
                             to="/services"
-                            className="text-white hover:text-[#D98A98]"
+                            className="text-base text-gray-600 transition hover:text-[#6b0717]"
                         >
                             Services
-                        </NavLink>
+                        </Link>
 
-                        <NavLink
+                        <Link
                             to="/track"
-                            className="text-white hover:text-[#D98A98]"
+                            className="text-base text-gray-600 transition hover:text-[#6b0717]"
                         >
-                            Track
-                        </NavLink>
+                            Track Parcel
+                        </Link>
 
-                        <NavLink
-                            to="/about"
-                            className="text-white hover:text-[#D98A98]"
+                        <Link
+                            to="/shipment-request"
+                            className="text-base text-gray-600 transition hover:text-[#6b0717]"
                         >
-                            About
-                        </NavLink>
+                            Request Shipment
+                        </Link>
+
+                        <Link
+                            to="/about"
+                            className="text-base text-gray-600 transition hover:text-[#6b0717]"
+                        >
+                            About Us
+                        </Link>
+
                     </div>
 
-                    <div className="hidden items-center gap-3 lg:flex">
+                    <div className="flex items-center gap-5">
+
                         <Link
                             to="/login"
-                            className="rounded-lg border border-[#D98A98] px-4 py-2 text-white hover:bg-[#560319]"
+                            className="hidden text-base font-medium text-gray-700 transition hover:text-[#6b0717] sm:block"
                         >
                             Login
                         </Link>
 
                         <Link
                             to="/register"
-                            className="rounded-lg bg-[#660000] px-4 py-2 text-white hover:bg-[#560319]"
+                            className="rounded-lg bg-[#680818] px-5 py-2.5 text-base font-semibold text-white transition hover:bg-[#4f0612]"
                         >
                             Register
                         </Link>
-                    </div>
 
-                    <button
-                        onClick={() => setMenuOpen(!menuOpen)}
-                        className="text-white lg:hidden"
-                    >
-                        {menuOpen ? <X size={28} /> : <Menu size={28} />}
-                    </button>
+                    </div>
                 </div>
-
-                {menuOpen && (
-                    <div className="bg-[#2F0909] px-5 pb-5 lg:hidden">
-                        <div className="flex flex-col gap-2">
-                            <NavLink
-                                to="/services"
-                                onClick={() => setMenuOpen(false)}
-                                className="rounded-lg px-3 py-3 text-white hover:bg-[#560319]"
-                            >
-                                Services
-                            </NavLink>
-
-                            <NavLink
-                                to="/about"
-                                onClick={() => setMenuOpen(false)}
-                                className="rounded-lg px-3 py-3 text-white hover:bg-[#560319]"
-                            >
-                                About
-                            </NavLink>
-
-                            <NavLink
-                                to="/contact"
-                                onClick={() => setMenuOpen(false)}
-                                className="rounded-lg px-3 py-3 text-white hover:bg-[#560319]"
-                            >
-                                Contact
-                            </NavLink>
-
-                            <NavLink
-                                to="/login"
-                                onClick={() => setMenuOpen(false)}
-                                className="rounded-lg px-3 py-3 text-white hover:bg-[#560319]"
-                            >
-                                Login
-                            </NavLink>
-
-                            <NavLink
-                                to="/register"
-                                onClick={() => setMenuOpen(false)}
-                                className="rounded-lg px-3 py-3 text-white hover:bg-[#560319]"
-                            >
-                                Register
-                            </NavLink>
-                        </div>
-                    </div>
-                )}
             </nav>
 
             <div className="fixed bottom-0 z-50 flex w-full border-t bg-white lg:hidden">
+
                 <NavLink
                     to="/"
-                    className="flex flex-1 flex-col items-center py-2 text-sm text-gray-600"
+                    className="flex flex-1 flex-col items-center py-3 text-sm text-gray-600"
                 >
-                    <Home size={22} />
+                    <Home size={23} />
                     Home
                 </NavLink>
 
                 <NavLink
                     to="/track"
-                    className="flex flex-1 flex-col items-center py-2 text-sm text-gray-600"
+                    className="flex flex-1 flex-col items-center py-3 text-sm text-gray-600"
                 >
-                    <PackageSearch size={22} />
+                    <PackageSearch size={23} />
                     Track
                 </NavLink>
 
                 <NavLink
                     to="/login"
-                    className="flex flex-1 flex-col items-center py-2 text-sm text-gray-600"
+                    className="flex flex-1 flex-col items-center py-3 text-sm text-gray-600"
                 >
-                    <User size={22} />
+                    <User size={23} />
                     Account
                 </NavLink>
+
             </div>
         </>
     );
