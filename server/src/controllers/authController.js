@@ -4,12 +4,12 @@ import User from "../models/User.js";
 
 export const registerUser = async (req, res) => {
   try {
-    const { name, email, password } = req.body;
+    const { name, email, phone, password } = req.body;
 
-    if (!name || !email || !password) {
+    if (!name || !email || !phone || !password) {
       return res.status(400).json({
         success: false,
-        message: "Name, email and password are required",
+        message: "Name, email, phone number and password are required",
       });
     }
 
@@ -27,6 +27,7 @@ export const registerUser = async (req, res) => {
     const user = await User.create({
       name,
       email,
+      phone,
       password: hashedPassword,
       role: "customer",
     });
@@ -37,6 +38,7 @@ export const registerUser = async (req, res) => {
       user: {
         id: user._id,
         name: user.name,
+        phone: user.phone,
         email: user.email,
         role: user.role,
       },
@@ -55,6 +57,8 @@ export const loginUser = async (req, res) => {
   try {
     const { email, password } = req.body;
 
+    console.log("LOGIN EMAIL:", email);
+
     if (!email || !password) {
       return res.status(400).json({
         success: false,
@@ -64,6 +68,8 @@ export const loginUser = async (req, res) => {
 
     const user = await User.findOne({ email });
 
+    console.log("USER FOUND:", !!user);
+
     if (!user) {
       return res.status(401).json({
         success: false,
@@ -71,12 +77,14 @@ export const loginUser = async (req, res) => {
       });
     }
 
-    const isPasswordCorrect = await bcrypt.compare(
+    const isPasswordValid = await bcrypt.compare(
       password,
       user.password
     );
 
-    if (!isPasswordCorrect) {
+    console.log("PASSWORD MATCH:", isPasswordValid);
+
+    if (!isPasswordValid) {
       return res.status(401).json({
         success: false,
         message: "Invalid email or password",
@@ -102,6 +110,7 @@ export const loginUser = async (req, res) => {
         id: user._id,
         name: user.name,
         email: user.email,
+        phone: user.phone,
         role: user.role,
       },
     });
@@ -110,7 +119,7 @@ export const loginUser = async (req, res) => {
 
     res.status(500).json({
       success: false,
-      message: "Server error",
+      message: "Something went wrong while logging in",
     });
   }
 };

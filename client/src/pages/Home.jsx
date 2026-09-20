@@ -1,5 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import Footer from "../components/Footer";
+import ServiceCard from "../components/ServiceCard";
 import {
   ArrowRight,
   ArrowUpRight,
@@ -16,12 +18,13 @@ import {
   Headphones,
   CircleCheck,
   Star,
+  Thermometer,
   Clock,
 } from "lucide-react";
 
 const Home = () => {
   return (
-    <div className="min-h-screen bg-[#faf9f7] text-[#26171a] pt-[120px]">
+    <div className="min-h-screen bg-[#faf9f7] text-[#26171a] pt-[92px]">
 
       <div className="w-full border-b border-[#eadfe0] bg-[#EAEEFB]">
         <div className="mx-auto flex max-w-7xl items-center justify-between px-5 py-1 sm:px-8 lg:px-12">
@@ -53,9 +56,7 @@ const Home = () => {
               </h1>
 
               <p className="mt-6 max-w-xl text-base leading-7 text-gray-600 sm:text-lg">
-                Seamless end-to-end logistics with real-time tracking,
-                scheduled doorstep pickups, and reliable delivery services
-                for individuals and businesses.
+                Seamless end-to-end logistics with real-time tracking, scheduled doorstep pickups, and strictly guaranteed arrival windows for individual senders and high-volume commercial enterprises.
               </p>
 
               <div className="mt-8 rounded-2xl border border-gray-200 bg-white p-4 shadow-lg sm:p-5">
@@ -126,7 +127,7 @@ const Home = () => {
 
             <div className="relative">
 
-              <div className="overflow-hidden rounded-3xl border border-[#eadde0] bg-[#EAEEFB] p-4s shadow-xl">
+              <div className="overflow-hidden rounded-3xl border border-[#eadde0] bg-[#EAEEFB] p-4 shadow-xl">
 
                 <img
                   src="/images/maphomepage.png"
@@ -285,16 +286,15 @@ const Home = () => {
             <div className="text-center">
 
               <p className="text-xs font-bold uppercase tracking-widest text-[#6b0717]">
-                Simple Process
+                OPERATIONAL SIMPLICITY
               </p>
 
               <h2 className="mt-3 text-3xl font-bold text-[#4f0714] sm:text-4xl">
-                How TRACKLY Works
+                How TRACKLY Delivers in 4 Seamless Steps
               </h2>
 
               <p className="mx-auto mt-3 max-w-xl text-base leading-7 text-gray-500">
-                From booking to final delivery, every step is simple and
-                easy to track.
+                From parcel creation to the recipient's signature, our computerized routing engine automates every micro-stage.
               </p>
 
             </div>
@@ -304,29 +304,29 @@ const Home = () => {
               <StepCard
                 number="01"
                 icon={<CalendarDays />}
-                title="Book Shipment"
-                description="Enter your shipment details and schedule a pickup."
+                title="Book & Schedule"
+                description="Enter sender & recipient details in under 2 minutes. Choose your pickup slot and speed preference with automated instant waybill creation."
               />
 
               <StepCard
                 number="02"
                 icon={<Package />}
-                title="Pickup"
-                description="Our courier partner collects your parcel from your location."
+                title="Doorstep Pickup"
+                description="Our uniformed field courier arrives at your location with mobile scales, scans the parcel barcode, and provides physical custody receipt immediately."
               />
 
               <StepCard
                 number="03"
                 icon={<MapPin />}
-                title="Track Parcel"
-                description="Follow your parcel through every stage of its journey."
+                title=" Real-Time Transit"
+                description="Watch your parcel travel in real time. Dynamic radar telemetry, airport transfers, sorting scans, and ETA updates streamed directly to your phone."
               />
 
               <StepCard
                 number="04"
                 icon={<CircleCheck />}
-                title="Delivered"
-                description="Your parcel reaches the destination safely and securely."
+                title="Secure Hand-Off"
+                description="Package delivered safely to recipient's hands or secured locker with digital e-signature capture, timestamp stamp, and instant photo confirmation."
               />
 
             </div>
@@ -338,24 +338,72 @@ const Home = () => {
           <div className="mx-auto grid max-w-7xl items-center gap-10 lg:grid-cols-2">
 
             <div className="overflow-hidden rounded-2xl">
-              <img
-                src="/images/HomeAdvantage.jpg"
-                alt="Trackly logistics"
-                className="h-[320px] w-full object-cover sm:h-[400px]"
-              />
+              <div className="relative">
+                <img
+                  src="/images/HomeAdvantage.jpg"
+                  alt="Trackly logistics"
+                  className="h-[280px] w-full object-cover sm:h-[300px]"
+                />
 
-              <div className="mx-auto grid max-w-7xl items-center gap-10 lg:grid-cols-2">
-                <div className="mt-4 flex flex-col items-center gap-2 rounded-xl border border-gray-200 bg-white p-4 text-center shadow-sm sm:mt-0">
-                  <h6>100%</h6>
-                  <p>Climate Monitored</p>
-                  <p>Pharma & perishable cargo vaults maintained at exact tolerances.</p>
-                </div>
-                <div className="mt-4 flex flex-col items-center gap-2 rounded-xl border border-gray-200 bg-white p-4 text-center shadow-sm sm:mt-0">
-                  <h6>256-Bit</h6>
-                  <p>Chain of Custody</p>
+                <div className="absolute inset-x-0 bottom-0 h-32 bg-gradient-to-t from-black/70 via-black/30 to-transparent" />
 
-                  <p>Cryptographic tracking events logged on immutable logistics ledger.</p>
+                <div className="absolute bottom-5 left-5 max-w-md sm:bottom-7 sm:left-7">
+                  <p className="text-xs font-bold uppercase tracking-[0.18em] text-[#F9C8BD]">
+                    Automated Sorting Technology
+                  </p>
+
+                  <h3 className="mt-1 text-xl font-bold text-white sm:text-2xl">
+                    22 National Regional Hubs
+                  </h3>
+
+                  <p className="mt-1 text-xs leading-5 text-gray-200 sm:text-sm">
+                    Cross-dock sorting completed in under 45 minutes per shipment batch.
+                  </p>
                 </div>
+              </div>
+
+              <div className="grid grid-cols-1 gap-4 pt-4 sm:grid-cols-2">
+
+                <div className="flex min-h-[120px] items-center gap-4 rounded-xl border border-gray-200 bg-white p-4 shadow-sm">
+                  <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full bg-[#fff1e9]">
+                    <Thermometer className="h-5 w-5 text-[#E0854C]" />
+                  </div>
+
+                  <div>
+                    <h6 className="text-lg font-bold text-[#4f0714]">
+                      100%
+                    </h6>
+
+                    <p className="mt-0.5 text-sm font-semibold text-[#4f0714]">
+                      Climate Monitored
+                    </p>
+
+                    <p className="mt-1 text-xs leading-5 text-gray-500">
+                      Pharma & perishable cargo vaults maintained at exact tolerances.
+                    </p>
+                  </div>
+                </div>
+
+                <div className="flex min-h-[120px] items-center gap-4 rounded-xl border border-gray-200 bg-white p-4 shadow-sm">
+                  <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full bg-[#fff1e9]">
+                    <ShieldCheck className="h-5 w-5 text-[#E0854C]" />
+                  </div>
+
+                  <div>
+                    <h6 className="text-lg font-bold text-[#4f0714]">
+                      256-Bit
+                    </h6>
+
+                    <p className="mt-0.5 text-sm font-semibold text-[#4f0714]">
+                      Chain of Custody
+                    </p>
+
+                    <p className="mt-1 text-xs leading-5 text-gray-500">
+                      Cryptographic tracking events logged on immutable logistics ledger.
+                    </p>
+                  </div>
+                </div>
+
               </div>
             </div>
 
@@ -401,7 +449,7 @@ const Home = () => {
           </div>
         </section>
 
-        <section className="bg-[#f4f1f3] px-5 py-14 sm:px-8 lg:px-12">
+        <section className="bg-[#f4f1f3] px-5 py-8 sm:px-8 lg:px-12">
           <div className="mx-auto max-w-7xl">
 
             <div className="rounded-3xl bg-white p-6 shadow-lg sm:p-10">
@@ -410,8 +458,8 @@ const Home = () => {
 
                 <div>
 
-                  <p className="text-xs font-bold uppercase tracking-widest text-[#6b0717]">
-                    Shipping Estimate
+                  <p className="text-xs font-bold uppercase tracking-widest text-[#FA6305]">
+                    INSTANT COST ESTIMATOR
                   </p>
 
                   <h2 className="mt-3 text-3xl font-bold text-[#4f0714] sm:text-4xl">
@@ -419,15 +467,14 @@ const Home = () => {
                   </h2>
 
                   <p className="mt-4 text-base leading-7 text-gray-500">
-                    Get an approximate shipping cost based on your pickup,
-                    destination, weight and delivery priority.
+                    Calculate instant courier shipping costs based on parcel weight, dimensions, and destination zone before placing your dispatch order.
                   </p>
 
-                  <div className="mt-7 rounded-xl bg-[#fff3f4] p-5">
+                  <div className="mt-7 rounded-xl bg-[#EAEEFB] p-5">
 
                     <div className="flex gap-3">
 
-                      <Truck className="h-6 w-6 text-[#6b0717]" />
+                      <Truck className="h-6 w-6 text-[#FA6305]" />
 
                       <div>
                         <h3 className="text-sm font-bold">
@@ -446,17 +493,17 @@ const Home = () => {
 
                 </div>
 
-                <div className="rounded-2xl bg-[#f8f7fa] p-5 sm:p-6">
+                <div className="rounded-2xl bg-[#EAEEFB] p-5 sm:p-6">
 
                   <div className="grid gap-5 sm:grid-cols-2">
 
                     <InputField
-                      label="From"
+                      label="From (ZIP / City)"
                       placeholder="Pickup city"
                     />
 
                     <InputField
-                      label="To"
+                      label="To (ZIP / City)"
                       placeholder="Destination city"
                     />
 
@@ -476,11 +523,11 @@ const Home = () => {
 
                     <div>
                       <p className="text-xs uppercase text-gray-400">
-                        Estimated Cost
+                        Estimated Transit  Cost
                       </p>
 
                       <p className="mt-1 text-3xl font-bold text-[#6b0717]">
-                        ₹1,499
+                        $28.40
                       </p>
                     </div>
 
@@ -488,7 +535,7 @@ const Home = () => {
                       to="/shipment-request"
                       className="rounded-lg bg-[#680818] px-6 py-3 text-center text-sm font-semibold text-white"
                     >
-                      Request Shipment
+                      Book This Shipment
                     </Link>
 
                   </div>
@@ -581,82 +628,8 @@ const Home = () => {
 
       </main>
 
-      <footer className="bg-[#051136] px-5 py-12 text-white sm:px-8 lg:px-12">
-
-        <div className="mx-auto grid max-w-7xl gap-10 md:grid-cols-4">
-
-          <div>
-
-            <div className="flex items-center gap-3">
-
-              <div className="rounded-lg bg-[#680818] p-2">
-                <Package className="h-5 w-5" />
-              </div>
-
-              <div>
-                <h3 className="text-lg font-bold">
-                  TRACKLY
-                </h3>
-
-                <p className="text-[9px] tracking-widest text-gray-400">
-                  SHIP. TRACK. DELIVER.
-                </p>
-              </div>
-
-            </div>
-
-            <p className="mt-5 text-sm leading-6 text-gray-400">
-              Modern courier and parcel delivery services built around
-              reliable tracking and simple shipment management.
-            </p>
-
-          </div>
-
-          <FooterColumn
-            title="Services"
-            links={[
-              "Domestic Delivery",
-              "Express Delivery",
-              "Business Delivery",
-            ]}
-          />
-
-          <FooterColumn
-            title="Customer"
-            links={[
-              "Track Parcel",
-              "Request Shipment",
-              "My Shipments",
-              "Contact",
-            ]}
-          />
-
-          <FooterColumn
-            title="Company"
-            links={[
-              "About Us",
-              "Privacy Policy",
-              "Terms of Service",
-              "Support",
-            ]}
-          />
-
-        </div>
-
-        <div className="mx-auto mt-10 flex max-w-7xl flex-col gap-3 border-t border-white/10 pt-6 text-xs text-gray-500 sm:flex-row sm:items-center sm:justify-between">
-
-          <p>
-            © 2026 TRACKLY. All rights reserved.
-          </p>
-
-          <p>
-            SHIP. TRACK. DELIVER.
-          </p>
-
-        </div>
-
-      </footer>
-
+      <Footer />
+      
     </div>
   );
 };
@@ -679,87 +652,6 @@ const SmallStat = ({ icon, title, text }) => {
         </p>
       </div>
 
-    </div>
-  );
-};
-
-const ServiceCard = ({
-  icon,
-  iconText,
-  title,
-  description,
-  features,
-  priceLabel,
-  price,
-  buttonText,
-  featured,
-}) => {
-  return (
-    <div
-      className={`relative flex h-full flex-col rounded-2xl border bg-white p-6 shadow-sm ${featured
-        ? "border-[#6b0717] shadow-md"
-        : "border-gray-200"
-        }`}
-    >
-      {featured && (
-        <span className="absolute -top-3 left-6 rounded-full bg-[#6b0717] px-4 py-1 text-xs font-bold uppercase tracking-wide text-white">
-          Most Popular
-        </span>
-      )}
-
-      <div className="flex items-center gap-3">
-        <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-[#fff0f2] text-[#E0854C]">
-          {icon}
-        </div>
-
-        <p className="text-sm font-semibold text-[#6b0717]">
-          {iconText}
-        </p>
-      </div>
-
-      <h3 className="mt-5 text-2xl font-bold text-[#4f0714]">
-        {title}
-      </h3>
-
-      <p className="mt-3 min-h-[64px] text-sm leading-6 text-gray-500">
-        {description}
-      </p>
-
-      <div className="mt-5 space-y-2">
-        {features.map((feature, index) => (
-          <div key={index} className="flex items-start gap-2 text-sm text-gray-600">
-            <span
-              className={`mt-0.5 font-bold ${featured ? "text-[#E0854C]" : "text-[#6b0717]"
-                }`}
-            >
-              →
-            </span>
-
-            <span>{feature}</span>
-          </div>
-        ))}
-      </div>
-
-      <div className="mt-7 overflow-hidden rounded-xl bg-[#EEF6FF]">
-        <div className="flex items-center justify-between gap-4 px-5 py-4">
-          <div>
-            <p className="text-xs font-medium text-gray-500">
-              {priceLabel}
-            </p>
-
-            <p className="mt-1 text-xl font-bold text-[#4f0714]">
-              {price}
-            </p>
-          </div>
-
-          <Link
-            to="/shipment-request"
-            className="shrink-0 rounded-lg bg-[#6b0717] px-4 py-2.5 text-sm font-bold text-white transition hover:bg-[#4f0612]"
-          >
-            {buttonText}
-          </Link>
-        </div>
-      </div>
     </div>
   );
 };
@@ -875,29 +767,5 @@ const Testimonial = ({ name, role, text }) => {
   );
 };
 
-const FooterColumn = ({ title, links }) => {
-  return (
-    <div>
-
-      <h3 className="text-sm font-bold">
-        {title}
-      </h3>
-
-      <div className="mt-4 space-y-3">
-
-        {links.map((link, index) => (
-          <p
-            key={index}
-            className="text-sm text-gray-400"
-          >
-            {link}
-          </p>
-        ))}
-
-      </div>
-
-    </div>
-  );
-};
 
 export default Home;
