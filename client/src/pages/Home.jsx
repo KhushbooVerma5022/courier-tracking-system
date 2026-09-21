@@ -24,25 +24,10 @@ import {
 
 const Home = () => {
   return (
-    <div className="min-h-screen bg-[#faf9f7] text-[#26171a] pt-[92px]">
-
-      <div className="w-full border-b border-[#eadfe0] bg-[#EAEEFB]">
-        <div className="mx-auto flex max-w-7xl items-center justify-between px-5 py-1 sm:px-8 lg:px-12">
-
-          <div className="flex items-center gap-2 text-xs text-gray-600 sm:text-sm font-[Fredoka]">
-            <span className="h-2 w-2 rounded-full bg-orange-500"></span>
-            <span>Reliable delivery, simplified, Ship With Confidence</span>
-          </div>
-
-          <span className="hidden text-xs font-bold uppercase tracking-widest text-[#6b0717] md:block">
-            SHIP • TRACK • DELIVER
-          </span>
-
-        </div>
-      </div>
+    <div className="min-h-screen bg-[#faf9f7] text-[#26171a] pt-[98px]">
 
       <main>
-        <section className="px-5 py-12 sm:px-8 lg:px-20 lg:py-10">
+        <section className="px-5 py-6 sm:px-8 lg:px-20 lg:py-8">
           <div className="mx-auto grid max-w-7xl items-center gap-8 lg:grid-cols-[1.2fr_0.8fr]">
 
             <div>
@@ -130,63 +115,10 @@ const Home = () => {
               <div className="overflow-hidden rounded-3xl border border-[#eadde0] bg-[#EAEEFB] p-4 shadow-xl">
 
                 <img
-                  src="/images/maphomepage.png"
+                  src="/images/homepageMain2.png"
                   alt="Trackly parcel tracking"
                   className="h-[420px] w-full rounded-2xl object-cover sm:h-[500px]"
                 />
-
-              </div>
-
-              <div className="absolute -bottom-1 -left-1 -right-1 rounded-2xl border border-gray-200 bg-white shadow-xl sm:bottom-5 sm:left-5 sm:right-5 sm:p-6">
-                <div className="flex items-center justify-between gap-4">
-
-                  <div className="flex items-center gap-3">
-
-                    <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-full bg-[#fff0f2]">
-                      <Truck className="h-6 w-6 text-[#E0854C]" />
-                    </div>
-
-                    <div>
-                      <p className="text-lg font-bold text-[#4f0714] sm:text-xl">
-                        Express Delivery
-                      </p>
-
-                      <p className="mt-1 text-sm text-gray-500">
-                        Fast & Priority Service
-                      </p>
-                    </div>
-
-                  </div>
-
-                  <span className="shrink-0 rounded-full bg-[#fff2dd] px-4 py-2 text-xs font-bold text-[#9a5b00] sm:text-sm">
-                    PRIORITY
-                  </span>
-
-                </div>
-
-                <div className="mt-5 grid grid-cols-2 gap-3 border-t border-gray-100 pt-4">
-
-                  <div>
-                    <p className="text-xs text-gray-400">
-                      Delivery Type
-                    </p>
-
-                    <p className="mt-1 text-sm font-semibold text-[#4f0714]">
-                      Door-to-Door
-                    </p>
-                  </div>
-
-                  <div>
-                    <p className="text-xs text-gray-400">
-                      Service
-                    </p>
-
-                    <p className="mt-1 text-sm font-semibold text-[#4f0714]">
-                      Priority Handling
-                    </p>
-                  </div>
-
-                </div>
 
               </div>
 

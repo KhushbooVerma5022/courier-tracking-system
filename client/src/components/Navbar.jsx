@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Link } from "react-router-dom";
+import { NavLink, Link } from "react-router-dom";
 import { Menu, X, Package } from "lucide-react";
 
 function Navbar() {
@@ -8,6 +8,20 @@ function Navbar() {
     const closeMenu = () => {
         setMenuOpen(false);
     };
+
+    const navClass = ({ isActive }) =>
+        `text-md font-semibold transition ${
+            isActive
+                ? "text-[#6b0717]"
+                : "text-gray-600 hover:text-[#6b0717]"
+        }`;
+
+    const mobileNavClass = ({ isActive }) =>
+        `border-b border-gray-100 py-3 text-sm font-semibold transition ${
+            isActive
+                ? "text-[#6b0717]"
+                : "text-gray-700 hover:text-[#6b0717]"
+        }`;
 
     return (
         <>
@@ -26,7 +40,7 @@ function Navbar() {
                 </div>
             </div>
 
-            <nav className="fixed top-7 z-50 w-full bg-white shadow-sm">
+            <nav className="fixed top-8 z-50 w-full bg-white shadow-sm">
                 <div className="mx-auto flex max-w-7xl items-center justify-between px-4 py-3 sm:px-6 lg:px-10">
 
                     <Link
@@ -39,11 +53,11 @@ function Navbar() {
                         </div>
 
                         <div>
-                            <h1 className="text-xl font-bold tracking-wide text-[#5d0715]">
-                                TRACKLY
+                            <h1 className="text-xl font-bold tracking-wide text-[#132142]">
+                                TRACK<span className="text-[#5d0715]">LY</span>
                             </h1>
 
-                            <p className="text-[7px] font-semibold tracking-widest text-gray-500">
+                            <p className="text-[9px] font-bold tracking-widest text-gray-500">
                                 SHIP. TRACK. DELIVER.
                             </p>
                         </div>
@@ -51,69 +65,82 @@ function Navbar() {
 
                     <div className="hidden items-center gap-7 lg:flex">
 
-                        <Link
+                        <NavLink
                             to="/"
-                            className="text-sm font-semibold text-[#6b0717]"
+                            end
+                            className={navClass}
                         >
                             Home
-                        </Link>
+                        </NavLink>
 
-                        <Link
+                        <NavLink
                             to="/services"
-                            className="text-sm text-gray-600 transition hover:text-[#6b0717]"
+                            className={navClass}
                         >
                             Services
-                        </Link>
+                        </NavLink>
 
-                        <Link
+                        <NavLink
                             to="/track"
-                            className="text-sm text-gray-600 transition hover:text-[#6b0717]"
+                            className={navClass}
                         >
                             Track Parcel
-                        </Link>
+                        </NavLink>
 
-                        <Link
+                        <NavLink
                             to="/shipment-request"
-                            className="text-sm text-gray-600 transition hover:text-[#6b0717]"
+                            className={navClass}
                         >
                             Request Shipment
-                        </Link>
+                        </NavLink>
 
-                        <Link
+                        <NavLink
                             to="/about"
-                            className="text-sm text-gray-600 transition hover:text-[#6b0717]"
+                            className={navClass}
                         >
                             About Us
-                        </Link>
+                        </NavLink>
 
                     </div>
 
                     <div className="hidden items-center gap-4 lg:flex">
 
-                        <Link
+                        <NavLink
                             to="/login"
-                            className="text-sm font-medium text-gray-700 transition hover:text-[#6b0717]"
+                            className={navClass}
                         >
                             Login
-                        </Link>
+                        </NavLink>
 
-                        <Link
+                        <NavLink
                             to="/register"
-                            className="rounded-lg bg-[#680818] px-4 py-2 text-sm font-semibold text-white transition hover:bg-[#4f0612]"
+                            className={({ isActive }) =>
+                                `rounded-lg px-4 py-2 text-md font-semibold text-white transition ${
+                                    isActive
+                                        ? "bg-[#6b0717]"
+                                        : "bg-[#680818] hover:bg-[#4f0612]"
+                                }`
+                            }
                         >
                             Register
-                        </Link>
+                        </NavLink>
 
                     </div>
 
                     <div className="flex items-center gap-2 lg:hidden">
 
-                        <Link
+                        <NavLink
                             to="/register"
-                            className="rounded-lg bg-[#680818] px-3 py-1.5 text-xs font-semibold text-white"
+                            className={({ isActive }) =>
+                                `rounded-lg px-3 py-1.5 text-xs font-semibold text-white ${
+                                    isActive
+                                        ? "bg-[#6b0717]"
+                                        : "bg-[#680818]"
+                                }`
+                            }
                         >
                             Register
-                        </Link>
+                        </NavLink>
 
                         <button
                             onClick={() => setMenuOpen(!menuOpen)}
@@ -134,53 +161,54 @@ function Navbar() {
 
                         <div className="flex flex-col">
 
-                            <Link
+                            <NavLink
                                 to="/"
+                                end
                                 onClick={closeMenu}
-                                className="border-b border-gray-100 py-3 text-sm font-semibold text-[#6b0717]"
+                                className={mobileNavClass}
                             >
                                 Home
-                            </Link>
+                            </NavLink>
 
-                            <Link
+                            <NavLink
                                 to="/services"
                                 onClick={closeMenu}
-                                className="border-b border-gray-100 py-3 text-sm text-gray-700"
+                                className={mobileNavClass}
                             >
                                 Services
-                            </Link>
+                            </NavLink>
 
-                            <Link
+                            <NavLink
                                 to="/track"
                                 onClick={closeMenu}
-                                className="border-b border-gray-100 py-3 text-sm text-gray-700"
+                                className={mobileNavClass}
                             >
                                 Track Parcel
-                            </Link>
+                            </NavLink>
 
-                            <Link
+                            <NavLink
                                 to="/shipment-request"
                                 onClick={closeMenu}
-                                className="border-b border-gray-100 py-3 text-sm text-gray-700"
+                                className={mobileNavClass}
                             >
                                 Request Shipment
-                            </Link>
+                            </NavLink>
 
-                            <Link
+                            <NavLink
                                 to="/about"
                                 onClick={closeMenu}
-                                className="border-b border-gray-100 py-3 text-sm text-gray-700"
+                                className={mobileNavClass}
                             >
                                 About Us
-                            </Link>
+                            </NavLink>
 
-                            <Link
+                            <NavLink
                                 to="/login"
                                 onClick={closeMenu}
-                                className="py-3 text-sm font-semibold text-[#6b0717]"
+                                className={mobileNavClass}
                             >
                                 Login
-                            </Link>
+                            </NavLink>
 
                         </div>
                     </div>

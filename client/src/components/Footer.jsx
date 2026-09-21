@@ -1,4 +1,3 @@
-import { Link } from "react-router-dom";
 import { Package } from "lucide-react";
 
 const FooterColumn = ({ title, links }) => {
