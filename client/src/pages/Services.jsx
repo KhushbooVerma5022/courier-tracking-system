@@ -154,7 +154,7 @@ const Services = () => {
                 Enterprise & Domestic Courier Solutions
               </div>
 
-              <h1 className="text-4xl font-bold leading-tight text-[#18151c] sm:text-5xl">
+              <h1 className="text-3xl font-bold leading-tight text-[#18151c] sm:text-4xl">
                 Precision Delivery Services
                 <span className="block text-[#680818]">
                   Tailored for Every Package

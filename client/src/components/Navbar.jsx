@@ -81,7 +81,7 @@ function Navbar() {
                         </NavLink>
 
                         <NavLink
-                            to="/track"
+                            to="/tracking"
                             className={navClass}
                         >
                             Track Parcel
@@ -179,7 +179,7 @@ function Navbar() {
                             </NavLink>
 
                             <NavLink
-                                to="/track"
+                                to="/tracking"
                                 onClick={closeMenu}
                                 className={mobileNavClass}
                             >
