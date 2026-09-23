@@ -333,44 +333,6 @@ const Tracking = () => {
 
                             </section>
 
-                            <section className="rounded-xl bg-white p-4 shadow-sm sm:p-5">
-
-                                <div className="flex items-center justify-between">
-                                    <div className="flex items-center gap-2">
-                                        <Route className="h-4 w-4 text-[#680818]" />
-
-                                        <h2 className="text-xl font-bold">
-                                            Live Transit Waypoint Map
-                                        </h2>
-                                    </div>
-
-                                    <span className="text-[12px] font-bold text-[#680818]">
-                                        ● GPS Telemetry Active
-                                    </span>
-                                </div>
-
-                                <div className="relative mt-4 overflow-hidden rounded-lg">
-
-                                    <img
-                                        src="/images/maphomepage.png"
-                                        alt="Live parcel route map"
-                                        className="h-[280px] w-full object-cover sm:h-[330px]"
-                                    />
-
-                                    <div className="absolute bottom-0 left-0 right-0 bg-black/65 px-4 py-3 text-white">
-                                        <p className="text-[12px] uppercase text-gray-300">
-                                            Current GPS Fix
-                                        </p>
-
-                                        <p className="mt-1 text-[14px] font-semibold">
-                                            41.9742°N, 87.9073°W • Interstate 90 Eastbound
-                                        </p>
-                                    </div>
-
-                                </div>
-
-                            </section>
-
                         </div>
 
                         <aside className="space-y-5 lg:sticky lg:top-[140px] lg:self-start">

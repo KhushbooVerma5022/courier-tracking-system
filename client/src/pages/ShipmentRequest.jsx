@@ -11,6 +11,7 @@ import {
     Truck,
     UserRound,
 } from "lucide-react";
+import Footer from "../components/Footer";
 
 const RequestShipment = () => {
     const [service, setService] = useState("Express Next-Day");
@@ -828,6 +829,7 @@ const RequestShipment = () => {
                     </form>
                 </div>
             </section>
+            <Footer/>
         </div>
     );
 };
