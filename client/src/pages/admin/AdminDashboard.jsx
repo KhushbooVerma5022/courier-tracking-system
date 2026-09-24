@@ -9,6 +9,8 @@ import {
     LogOut,
     ChevronRight,
 } from "lucide-react";
+import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 const menuSections = [
     {
@@ -40,6 +42,16 @@ const menuSections = [
 ];
 
 function AdminDashboard() {
+
+    const [showLogoutModal, setShowLogoutModal] = useState(false);
+    const navigate = useNavigate();
+
+    const handleLogout = () => {
+        localStorage.removeItem("token");
+        localStorage.removeItem("user");
+
+        navigate("/login");
+    };
     return (
         <div className="flex h-screen overflow-hidden bg-[#f8f7fc]">
 
@@ -81,15 +93,15 @@ function AdminDashboard() {
                                         <button
                                             key={item.name}
                                             className={`group flex w-full items-center justify-between rounded-lg px-3 py-2.5 text-left transition ${active
-                                                    ? "bg-white text-[#132142]"
-                                                    : "text-white/70 hover:bg-white/10 hover:text-white"
+                                                ? "bg-white text-[#132142]"
+                                                : "text-white/70 hover:bg-white/10 hover:text-white"
                                                 }`}
                                         >
                                             <div className="flex items-center gap-3">
                                                 <Icon
                                                     className={`h-5 w-5 ${active
-                                                            ? "text-[#132142]"
-                                                            : "text-white/60 group-hover:text-white"
+                                                        ? "text-[#132142]"
+                                                        : "text-white/60 group-hover:text-white"
                                                         }`}
                                                 />
 
@@ -127,7 +139,10 @@ function AdminDashboard() {
                             </p>
                         </div>
 
-                        <button className="text-white/50 transition hover:text-white">
+                        <button
+                            onClick={() => setShowLogoutModal(true)}
+                            className="text-white/50 transition hover:text-white"
+                        >
                             <LogOut className="h-5 w-5" />
                         </button>
                     </div>
@@ -163,6 +178,44 @@ function AdminDashboard() {
                 </div>
 
             </main>
+
+            {showLogoutModal && (
+                <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/50 px-4">
+                    <div className="w-full max-w-md rounded-2xl bg-white p-6 shadow-2xl">
+                        <div className="flex items-center gap-3">
+                            <div className="flex h-11 w-11 items-center justify-center rounded-full bg-red-100">
+                                <LogOut className="h-5 w-5 text-red-600" />
+                            </div>
+
+                            <div>
+                                <h3 className="text-xl font-bold text-[#4f0714]">
+                                    Confirm Logout
+                                </h3>
+
+                                <p className="mt-1 text-sm text-gray-500">
+                                    Are you sure you want to logout from the admin panel?
+                                </p>
+                            </div>
+                        </div>
+
+                        <div className="mt-6 flex justify-end gap-3">
+                            <button
+                                onClick={() => setShowLogoutModal(false)}
+                                className="rounded-lg border border-gray-300 px-4 py-2.5 text-sm font-semibold text-gray-700 transition hover:bg-gray-100"
+                            >
+                                Cancel
+                            </button>
+
+                            <button
+                                onClick={handleLogout}
+                                className="rounded-lg bg-[#6b0717] px-4 py-2.5 text-sm font-semibold text-white transition hover:bg-[#4f0714]"
+                            >
+                                Logout
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            )}
 
         </div>
     );
