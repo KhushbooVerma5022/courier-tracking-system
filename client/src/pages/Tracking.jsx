@@ -213,7 +213,7 @@ const Tracking = () => {
                                 </div>
 
                                 <div className="mt-7 overflow-x-auto pb-2">
-                                    <div className="min-w-[650px]">
+                                    <div className="min-w-[650px]">  
 
                                         <div className="relative grid grid-cols-5">
 
@@ -600,7 +600,7 @@ const Milestone = ({
                         : active
                         ? "bg-[#680818] text-white"
                         : "bg-[#eef0ff] text-gray-400"
-                }`}
+                }`} 
             >
                 {current ? (
                     <Truck className="h-4 w-4" />

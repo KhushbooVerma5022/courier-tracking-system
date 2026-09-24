@@ -75,7 +75,11 @@ const Login = () => {
             localStorage.setItem("token", data.token);
             localStorage.setItem("user", JSON.stringify(data.user));
 
-            navigate("/");
+            if (data.user.role === "admin") {
+                navigate("/admin/dashboard");
+            } else {
+                navigate("/");
+            }
         } catch (error) {
             setError("Unable to connect to the server");
         } finally {
@@ -181,11 +185,11 @@ const Login = () => {
                     <section className="flex flex-col justify-between p-6 sm:p-8 lg:p-28">
 
                         <div className="mx-auto w-full max-w-xl">
- 
+
                             <div className="flex items-center justify-between gap-4">
                                 <p className="text-xs font-bold uppercase tracking-wide text-[#9a4b18]">
                                     Unified Authentication
-                                </p> 
+                                </p>
 
                             </div>
 
