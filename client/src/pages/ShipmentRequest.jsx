@@ -31,7 +31,6 @@ const RequestShipment = () => {
         receiverCity: "",
         receiverState: "",
         receiverZip: "",
-        instructions: "",
         packageType: "Standard Box (Carton Container)",
         weight: "",
         length: "",
@@ -244,14 +243,6 @@ const RequestShipment = () => {
                                         />
                                     </div>
 
-                                    <label className="mt-4 flex items-center gap-2 text-[14px] text-gray-600">
-                                        <input
-                                            type="checkbox"
-                                            className="accent-[#680818]"
-                                        />
-                                        Save this address to my dispatch address book
-                                    </label>
-
                                 </section>
 
                                 <section className="rounded-xl bg-white p-5 shadow-sm sm:p-6">
@@ -339,21 +330,6 @@ const RequestShipment = () => {
                                             value={formData.receiverZip}
                                             onChange={handleChange}
                                             placeholder="43215"
-                                        />
-                                    </div>
-
-                                    <div className="mt-4">
-                                        <label className="mb-2 block text-[14px] font-semibold text-gray-600">
-                                            Delivery Instructions (Optional)
-                                        </label>
-
-                                        <textarea
-                                            name="instructions"
-                                            value={formData.instructions}
-                                            onChange={handleChange}
-                                            rows="3"
-                                            placeholder="Gate code, leave at front desk, special handling instructions..."
-                                            className="w-full resize-none rounded-lg bg-[#eef0ff] px-3 py-3 text-[15px] text-gray-700 outline-none placeholder:text-gray-400 focus:ring-2 focus:ring-[#680818]/20"
                                         />
                                     </div>
 
@@ -448,30 +424,10 @@ const RequestShipment = () => {
 
                                     </div>
 
-                                    <div className="mt-4 grid gap-4 sm:grid-cols-2">
-
-                                        <FormInput
-                                            label="Declared Value ($ USD)"
-                                            name="declaredValue"
-                                            value={formData.declaredValue}
-                                            onChange={handleChange}
-                                            placeholder="$ 450"
-                                        />
-
-                                        <FormInput
-                                            label="Package Content Description"
-                                            name="packageDescription"
-                                            value={formData.packageDescription}
-                                            onChange={handleChange}
-                                            placeholder="Computer electronics & replacement cables"
-                                        />
-
-                                    </div>
-
                                     <div className="mt-5 flex items-center gap-3 rounded-lg bg-[#eef0ff] p-3">
                                         <div className="h-12 w-12 shrink-0 overflow-hidden rounded-lg">
                                             <img
-                                                src="/images/package.jpg"
+                                                src="/images/Package.png"
                                                 alt="Package"
                                                 className="h-full w-full object-cover"
                                             />
@@ -610,62 +566,6 @@ const RequestShipment = () => {
 
                                     </div>
 
-                                    <div className="mt-5">
-                                        <p className="mb-3 text-[14px] font-semibold text-gray-600">
-                                            Optional Value Adds
-                                        </p>
-
-                                        <div className="grid gap-3 sm:grid-cols-2">
-
-                                            <label className="flex items-center justify-between rounded-lg bg-[#eef0ff] p-3">
-                                                <div className="flex items-center gap-2">
-                                                    <input
-                                                        type="checkbox"
-                                                        className="accent-[#680818]"
-                                                    />
-
-                                                    <div>
-                                                        <p className="text-[14px] font-semibold">
-                                                            Direct Recipient Signature
-                                                        </p>
-
-                                                        <p className="text-[12px] text-gray-400">
-                                                            Proof of delivery record
-                                                        </p>
-                                                    </div>
-                                                </div>
-
-                                                <span className="text-[13px] font-bold text-[#680818]">
-                                                    +$2.50
-                                                </span>
-                                            </label>
-
-                                            <label className="flex items-center justify-between rounded-lg bg-[#eef0ff] p-3">
-                                                <div className="flex items-center gap-2">
-                                                    <input
-                                                        type="checkbox"
-                                                        className="accent-[#680818]"
-                                                    />
-
-                                                    <div>
-                                                        <p className="text-[14px] font-semibold">
-                                                            Full Coverage Insurance
-                                                        </p>
-
-                                                        <p className="text-[12px] text-gray-400">
-                                                            Loss & damage indemnification
-                                                        </p>
-                                                    </div>
-                                                </div>
-
-                                                <span className="text-[13px] font-bold text-[#680818]">
-                                                    +$4.00
-                                                </span>
-                                            </label>
-
-                                        </div>
-                                    </div>
-
                                 </section>
 
                             </div>
@@ -800,26 +700,6 @@ const RequestShipment = () => {
                                         </p>
                                     </div>
 
-                                </div>
-
-                                <div className="mt-3 flex items-center justify-between rounded-xl bg-[#eef0ff] p-4">
-                                    <div className="flex items-center gap-3">
-                                        <Headphones className="h-5 w-5 text-[#680818]" />
-
-                                        <div>
-                                            <p className="text-[15px] font-bold">
-                                                Need Freight Assistance?
-                                            </p>
-
-                                            <p className="text-[13px] text-gray-500">
-                                                Dispatchers standby 24/7
-                                            </p>
-                                        </div>
-                                    </div>
-
-                                    <span className="text-[12px] font-bold text-[#680818]">
-                                        Live Chat
-                                    </span>
                                 </div>
 
                             </aside>

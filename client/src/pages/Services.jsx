@@ -601,10 +601,10 @@ const Services = () => {
                 className="rounded-lg bg-white px-4 py-3 text-md font-bold text-[#680818]"
               >
                 Request a Shipment Now
-              </Link> 
+              </Link>
 
               <Link
-                to="/track"
+                to="/tracking"
                 className="rounded-lg border border-white/30 px-6 py-3 text-sm font-bold text-white"
               >
                 Track Parcel
