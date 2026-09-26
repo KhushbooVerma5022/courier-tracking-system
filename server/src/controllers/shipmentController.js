@@ -39,3 +39,137 @@ export const createShipment = async (req, res) => {
         });
     }
 }
+
+export const getMyShipments = async (req, res) => {
+    try {
+        const shipments = await Shipment.find({
+            customer: req.user.userId
+        }).sort({ createdAt: -1 });
+
+        res.status(200).json({
+            success: true,
+            shipments
+        });
+
+    } catch (error) {
+        console.error("Error fetching shipments:", error);
+
+        res.status(500).json({
+            success: false,
+            message: "Server error."
+        });
+    }
+};
+
+export const getAllShipments = async (req, res) => {
+    try {
+        const shipments = await Shipment.find().sort({ createdAt: -1 });
+
+        res.status(200).json({
+            success: true,
+            shipments
+        });
+    } catch (error) {
+        console.error("Error fetching all shipments:", error);
+
+        res.status(500).json({
+            success: false,
+            message: "Server error."
+        });
+    }
+};
+
+export const getShipmentById = async (req, res) => {
+    try {
+
+        const shipment = await Shipment.findById(req.params.id)
+
+        if (!shipment) {
+            {
+                res.status(404).json({
+                    success: false,
+                    message: "Shipment not found"
+                })
+            }
+        }
+
+        res.status(200).json({
+            success: true,
+            shipment
+        })
+
+    } catch (error) {
+        console.error("Error fetching shipment:", error);
+
+        res.status(500).json({
+            success: false,
+            message: "Server error"
+        })
+    }
+}
+
+export const updateShipment = async (req, res) => {
+    try {
+
+        const shipment = await Shipment.findById(req.params.id);
+
+        if (!shipment) {
+            {
+                res.status(404).json({
+                    success: false,
+                    message: "Shipment not found"
+                })
+            }
+        }
+
+        const updatedShipment = await Shipment.findByIdAndUpdate(
+            req.params.id,
+            req.body,
+            {
+                new: true,
+                runValidators: true
+            }
+        );
+
+        res.status(200).json({
+            success: true,
+            message: "Shipment updated successfully",
+            shipment: updatedShipment
+        });
+
+    } catch (error) {
+        console.error("Error Updating shipment:", error);
+
+        res.status(500).json({
+            success: false,
+            message: "Server error"
+        })
+    }
+}
+
+export const deleteShipment = async (req, res) => {
+    try {
+        const shipment = await Shipment.findById(req.params.id);
+
+        if (!shipment) {
+            return res.status(404).json({
+                success: false,
+                message: "Shipment not found."
+            });
+        }
+
+        await Shipment.findByIdAndDelete(req.params.id);
+
+        res.status(200).json({
+            success: true,
+            message: "Shipment deleted successfully"
+        });
+    } catch (error) {
+        console.error("Error deleting shipment:", error);
+
+        res.status(500).json({
+            success: false,
+            message: "Server error."
+        });
+    }
+};
