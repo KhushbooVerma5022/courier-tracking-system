@@ -10,33 +10,34 @@ function Navbar() {
     };
 
     const navClass = ({ isActive }) =>
-        `text-md font-semibold transition ${
-            isActive
-                ? "text-[#6b0717]"
-                : "text-gray-600 hover:text-[#6b0717]"
+        `text-md font-semibold transition ${isActive
+            ? "text-[#6b0717]"
+            : "text-gray-600 hover:text-[#6b0717]"
         }`;
 
     const mobileNavClass = ({ isActive }) =>
-        `border-b border-gray-100 py-3 text-sm font-semibold transition ${
-            isActive
-                ? "text-[#6b0717]"
-                : "text-gray-700 hover:text-[#6b0717]"
+        `border-b border-gray-100 py-3 text-sm font-semibold transition ${isActive
+            ? "text-[#6b0717]"
+            : "text-gray-700 hover:text-[#6b0717]"
         }`;
 
     return (
         <>
-            <div className="fixed top-0 z-50 w-full bg-[#132142] px-4 py-2 text-xs text-white sm:px-6">
-                <div className="mx-auto flex max-w-7xl items-center justify-between">
-                    <p>
-                        24/7 Priority Dispatch{" "}
-                        <span className="text-[#E0854C]">
-                            • 1-800-TRACKLY
-                        </span>
-                    </p>
+            <div className="fixed top-0 z-50 w-full overflow-hidden bg-[#132142] py-2 text-xs text-white sm:text-sm">
+                <div className="flex w-max animate-[marquee_10s_linear_infinite]">
+                    <div className="flex shrink-0 items-center gap-8 px-8">
+                        <span>🚚 Same-Day Dispatch Available</span>
+                        <span>📦 Track Your Shipment Anytime</span>
+                        <span>🌍 Domestic & Express Delivery</span>
+                        <span>🕐 Customer Support Available 24/7</span>
+                    </div>
 
-                    <span className="hidden font-semibold text-[#FA6305] sm:block">
-                        OPERATING 24/7
-                    </span>
+                    <div className="flex shrink-0 items-center gap-8 px-8">
+                        <span>🚚 Same-Day Dispatch Available</span>
+                        <span>📦 Track Your Shipment Anytime</span>
+                        <span>🌍 Domestic & Express Delivery</span>
+                        <span>🕐 Customer Support Available 24/7</span>
+                    </div>
                 </div>
             </div>
 
@@ -74,6 +75,20 @@ function Navbar() {
                         </NavLink>
 
                         <NavLink
+                            to="/about"
+                            className={navClass}
+                        >
+                            About Us
+                        </NavLink>
+
+                        <NavLink
+                            to="/shipment-request"
+                            className={navClass}
+                        >
+                            Request Shipment
+                        </NavLink>
+
+                        <NavLink
                             to="/services"
                             className={navClass}
                         >
@@ -87,19 +102,6 @@ function Navbar() {
                             Track Parcel
                         </NavLink>
 
-                        <NavLink
-                            to="/shipment-request"
-                            className={navClass}
-                        >
-                            Request Shipment
-                        </NavLink>
-
-                        <NavLink
-                            to="/about"
-                            className={navClass}
-                        >
-                            About Us
-                        </NavLink>
 
                     </div>
 
@@ -115,10 +117,9 @@ function Navbar() {
                         <NavLink
                             to="/register"
                             className={({ isActive }) =>
-                                `rounded-lg px-4 py-2 text-md font-semibold text-white transition ${
-                                    isActive
-                                        ? "bg-[#6b0717]"
-                                        : "bg-[#680818] hover:bg-[#4f0612]"
+                                `rounded-lg px-4 py-2 text-md font-semibold text-white transition ${isActive
+                                    ? "bg-[#6b0717]"
+                                    : "bg-[#680818] hover:bg-[#4f0612]"
                                 }`
                             }
                         >
@@ -132,10 +133,9 @@ function Navbar() {
                         <NavLink
                             to="/register"
                             className={({ isActive }) =>
-                                `rounded-lg px-3 py-1.5 text-xs font-semibold text-white ${
-                                    isActive
-                                        ? "bg-[#6b0717]"
-                                        : "bg-[#680818]"
+                                `rounded-lg px-3 py-1.5 text-xs font-semibold text-white ${isActive
+                                    ? "bg-[#6b0717]"
+                                    : "bg-[#680818]"
                                 }`
                             }
                         >

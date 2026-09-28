@@ -27,15 +27,10 @@ const Home = () => {
     <div className="min-h-screen bg-[#faf9f7] text-[#26171a] pt-[98px]">
 
       <main>
-        <section className="px-5 py-6 sm:px-8 lg:px-20 lg:py-8">
+        <section className="px-5 py-6 sm:px-8 lg:px-20 ">
           <div className="mx-auto grid max-w-7xl items-center gap-8 lg:grid-cols-[1.2fr_0.8fr]">
 
             <div>
-              <div className="mb-6 inline-flex items-center gap-2 rounded-full border border-[#e6c5ca] bg-[#F5CDC1] px-4 py-1 text-xs font-semibold uppercase tracking-wide text-[#6b0717]">
-                <Zap className="h-4 w-4" />
-                Next-Gen Courier Logistics
-              </div>
-
               <h1 className="max-w-2xl text-4xl font-bold tracking-tight leading-tight text-[#6B1F3A] sm:text-5xl lg:text-5xl">
                 Reliable, Ultra-Fast Courier & Parcel Delivery Nationwide
               </h1>
@@ -561,7 +556,7 @@ const Home = () => {
       </main>
 
       <Footer />
-      
+
     </div>
   );
 };

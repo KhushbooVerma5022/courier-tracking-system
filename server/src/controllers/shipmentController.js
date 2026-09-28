@@ -99,11 +99,17 @@ export const getShipmentById = async (req, res) => {
         })
 
     } catch (error) {
+        if (error.name === "CastError") {
+            return res.status(400).json({
+                success: false,
+                message: "Invalid shipment ID."
+            });
+        }
         console.error("Error fetching shipment:", error);
 
         res.status(500).json({
             success: false,
-            message: "Server error"
+            message: error.message
         })
     }
 }

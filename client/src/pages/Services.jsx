@@ -4,8 +4,6 @@ import {
   ArrowRight,
   Check,
   Clock3,
-  Cloud,
-  Globe,
   Headphones,
   MapPin,
   Package,
@@ -128,17 +126,17 @@ const Services = () => {
   const [service, setService] = useState("Express Next-Day");
   const [weight, setWeight] = useState("3");
 
-  const calculatePrice = () => {
-    if (service === "Domestic Standard") {
-      return (8.5 + Number(weight) * 0.5).toFixed(2);
-    }
+  // const calculatePrice = () => {
+  //   if (service === "Domestic Standard") {
+  //     return (8.5 + Number(weight) * 0.5).toFixed(2);
+  //   }
 
-    if (service === "Express Next-Day") {
-      return (24.9 + Number(weight) * 1.2).toFixed(2);
-    }
+  //   if (service === "Express Next-Day") {
+  //     return (24.9 + Number(weight) * 1.2).toFixed(2);
+  //   }
 
-    return "Custom";
-  };
+  //   return "Custom";
+  // };
 
   return (
     <div className="min-h-screen bg-[#f8f7fc] text-[#25161a] pt-[90px]">
@@ -541,7 +539,7 @@ const Services = () => {
 
             <button
               type="button"
-              onClick={calculatePrice}
+              // onClick={calculatePrice}
               className="self-end rounded-lg bg-[#680818] px-4 py-3 text-xs font-bold text-white transition hover:bg-[#500612]"
             >
               Update
@@ -558,11 +556,11 @@ const Services = () => {
                   Estimated Transit Cost
                 </p>
 
-                <p className="text-lg font-bold text-[#680818]">
+                {/* <p className="text-lg font-bold text-[#680818]">
                   {calculatePrice() === "Custom"
                     ? "Custom Quote"
                     : `$${calculatePrice()} USD`}
-                </p>
+                </p> */}
               </div>
             </div>
 

@@ -3,7 +3,6 @@ import {
     CalendarDays,
     ChevronDown,
     Clock3,
-    Headphones,
     LockKeyhole,
     MapPin,
     Package,
@@ -36,8 +35,6 @@ const RequestShipment = () => {
         length: "",
         width: "",
         height: "",
-        declaredValue: "",
-        packageDescription: "",
         pickupDate: "",
         pickupWindow: "Morning 8–12 PM",
     });
@@ -51,9 +48,118 @@ const RequestShipment = () => {
         }));
     };
 
-    const handleSubmit = (e) => {
+    const [loading, setLoading] = useState(false);
+    const [error, setError] = useState("");
+    const [success, setSuccess] = useState("");
+    const [trackingNumber, setTrackingNumber] = useState("");
+
+    const resetForm = () => {
+        setFormData({
+            senderName: "",
+            senderEmail: "",
+            senderPhone: "",
+            senderAddress: "",
+            senderCity: "",
+            senderState: "",
+            senderZip: "",
+            receiverName: "",
+            receiverEmail: "",
+            receiverPhone: "",
+            receiverAddress: "",
+            receiverCity: "",
+            receiverState: "",
+            receiverZip: "",
+            packageType: "",
+            weight: "",
+            length: "",
+            width: "",
+            height: "",
+            pickupDate: "",
+            pickupWindow: "",
+        });
+
+        setService("");
+    };
+
+    const handleSubmit = async (e) => {
         e.preventDefault();
-        console.log("Shipment form submitted:", formData);
+
+        console.log("Form Data:", formData);
+
+        setError("");
+        setSuccess("");
+        setTrackingNumber("");
+
+        const token = localStorage.getItem("token");
+
+        if (!token) {
+            setError("Please login before booking a shipment.");
+            return;
+        }
+
+        const shipmentData = {
+            sender: {
+                name: formData.senderName,
+                email: formData.senderEmail,
+                phone: formData.senderPhone,
+                address: formData.senderAddress,
+                city: formData.senderCity,
+                state: formData.senderState,
+                zip: formData.senderZip,
+            },
+            receiver: {
+                name: formData.receiverName,
+                email: formData.receiverEmail,
+                phone: formData.receiverPhone,
+                address: formData.receiverAddress,
+                city: formData.receiverCity,
+                state: formData.receiverState,
+                zip: formData.receiverZip,
+            },
+            parcel: {
+                packageType: formData.packageType,
+                weight: Number(formData.weight),
+                length: Number(formData.length),
+                width: Number(formData.width),
+                height: Number(formData.height),
+            },
+            service,
+            pickupDate: formData.pickupDate,
+            pickupWindow: formData.pickupWindow,
+        };
+
+        console.log("Shipment Data:", shipmentData);
+        try {
+            setLoading(true);
+
+            const response = await fetch(
+                "http://localhost:5000/api/v1/shipments",
+                {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json",
+                        Authorization: `Bearer ${token}`,
+                    },
+                    body: JSON.stringify(shipmentData),
+                }
+            );
+
+            const data = await response.json();
+
+            if (!response.ok) {
+                setError(data.message || "Unable to create shipment.");
+                return;
+            }
+
+            setSuccess(data.message || "Shipment created successfully.");
+            setTrackingNumber(data.shipment?.trackingNumber || "");
+            resetForm();
+
+        } catch (error) {
+            setError("Unable to connect to the server. Please try again.");
+        } finally {
+            setLoading(false);
+        }
     };
 
     return (
@@ -675,12 +781,30 @@ const RequestShipment = () => {
                                         </div>
                                     </div>
 
+                                    {error && (
+                                        <div className="mt-4 rounded-lg bg-red-50 px-4 py-3 text-[13px] font-semibold text-red-600">
+                                            {error}
+                                        </div>
+                                    )}
+
+                                    {success && (
+                                        <div className="mt-4 rounded-lg bg-green-50 px-4 py-3 text-[13px] font-semibold text-green-700">
+                                            <p>{success}</p>
+                                            {trackingNumber && (
+                                                <p className="mt-1 text-[15px] font-bold text-[#680818]">
+                                                    Tracking Number: {trackingNumber}
+                                                </p>
+                                            )}
+                                        </div>
+                                    )}
+
                                     <button
                                         type="submit"
-                                        className="mt-5 flex w-full items-center justify-center gap-2 rounded-lg bg-[#680818] px-4 py-3 text-[15px] font-bold text-white transition hover:bg-[#500612]"
+                                        disabled={loading}
+                                        className="mt-5 flex w-full items-center justify-center gap-2 rounded-lg bg-[#680818] px-4 py-3 text-[15px] font-bold text-white transition hover:bg-[#500612] disabled:cursor-not-allowed disabled:opacity-60"
                                     >
                                         <LockKeyhole className="h-4 w-4" />
-                                        Confirm & Book Shipment
+                                        {loading ? "Booking Shipment..." : "Confirm & Book Shipment"}
                                     </button>
 
                                     <button
@@ -709,7 +833,7 @@ const RequestShipment = () => {
                     </form>
                 </div>
             </section>
-            <Footer/>
+            <Footer />
         </div>
     );
 };
