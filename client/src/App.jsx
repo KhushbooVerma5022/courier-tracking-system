@@ -10,6 +10,7 @@ import About from "./pages/About";
 import AdminDashboard from "./pages/admin/AdminDashboard";
 import ProtectedRoute from "./components/auth/ProtectedRoute";
 import AdminRoute from "./components/auth/AdminRoute";
+import MyShipments from "./pages/MyShipments";
 
 function AppContent() {
   const location = useLocation();
@@ -28,6 +29,10 @@ function AppContent() {
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
 
+        <Route element={<ProtectedRoute />}>
+          <Route path="/my-shipments" element={<MyShipments />} />
+        </Route>
+        
         <Route element={<ProtectedRoute />}>
           <Route element={<AdminRoute />}>
             <Route path="/admin/dashboard" element={<AdminDashboard />} />

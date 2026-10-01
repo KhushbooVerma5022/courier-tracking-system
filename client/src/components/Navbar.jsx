@@ -5,20 +5,24 @@ import { Menu, X, Package } from "lucide-react";
 function Navbar() {
     const [menuOpen, setMenuOpen] = useState(false);
 
+    const token = localStorage.getItem("token");
+
     const closeMenu = () => {
         setMenuOpen(false);
     };
 
     const navClass = ({ isActive }) =>
-        `text-md font-semibold transition ${isActive
-            ? "text-[#6b0717]"
-            : "text-gray-600 hover:text-[#6b0717]"
+        `text-md font-semibold transition ${
+            isActive
+                ? "text-[#6b0717]"
+                : "text-gray-600 hover:text-[#6b0717]"
         }`;
 
     const mobileNavClass = ({ isActive }) =>
-        `border-b border-gray-100 py-3 text-sm font-semibold transition ${isActive
-            ? "text-[#6b0717]"
-            : "text-gray-700 hover:text-[#6b0717]"
+        `border-b border-gray-100 py-3 text-sm font-semibold transition ${
+            isActive
+                ? "text-[#6b0717]"
+                : "text-gray-700 hover:text-[#6b0717]"
         }`;
 
     return (
@@ -102,6 +106,14 @@ function Navbar() {
                             Track Parcel
                         </NavLink>
 
+                        {token && (
+                            <NavLink
+                                to="/my-shipments"
+                                className={navClass}
+                            >
+                                My Shipments
+                            </NavLink>
+                        )}
 
                     </div>
 
@@ -117,9 +129,10 @@ function Navbar() {
                         <NavLink
                             to="/register"
                             className={({ isActive }) =>
-                                `rounded-lg px-4 py-2 text-md font-semibold text-white transition ${isActive
-                                    ? "bg-[#6b0717]"
-                                    : "bg-[#680818] hover:bg-[#4f0612]"
+                                `rounded-lg px-4 py-2 text-md font-semibold text-white transition ${
+                                    isActive
+                                        ? "bg-[#6b0717]"
+                                        : "bg-[#680818] hover:bg-[#4f0612]"
                                 }`
                             }
                         >
@@ -133,9 +146,10 @@ function Navbar() {
                         <NavLink
                             to="/register"
                             className={({ isActive }) =>
-                                `rounded-lg px-3 py-1.5 text-xs font-semibold text-white ${isActive
-                                    ? "bg-[#6b0717]"
-                                    : "bg-[#680818]"
+                                `rounded-lg px-3 py-1.5 text-xs font-semibold text-white ${
+                                    isActive
+                                        ? "bg-[#6b0717]"
+                                        : "bg-[#680818]"
                                 }`
                             }
                         >
@@ -185,6 +199,16 @@ function Navbar() {
                             >
                                 Track Parcel
                             </NavLink>
+
+                            {token && (
+                                <NavLink
+                                    to="/my-shipments"
+                                    onClick={closeMenu}
+                                    className={mobileNavClass}
+                                >
+                                    My Shipments
+                                </NavLink>
+                            )}
 
                             <NavLink
                                 to="/shipment-request"
