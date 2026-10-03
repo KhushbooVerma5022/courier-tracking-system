@@ -19,7 +19,6 @@ import {
   CircleCheck,
   Star,
   Thermometer,
-  Clock,
 } from "lucide-react";
 
 const Home = () => {
@@ -27,95 +26,58 @@ const Home = () => {
     <div className="min-h-screen bg-[#faf9f7] text-[#26171a] pt-[98px]">
 
       <main>
-        <section className="px-5 py-6 sm:px-8 lg:px-20 ">
-          <div className="mx-auto grid max-w-7xl items-center gap-8 lg:grid-cols-[1.2fr_0.8fr]">
+        <section className="px-5 py-8 sm:px-8 lg:px-20">
+          <div className="mx-auto max-w-7xl">
 
-            <div>
-              <h1 className="max-w-2xl text-4xl font-bold tracking-tight leading-tight text-[#6B1F3A] sm:text-5xl lg:text-5xl">
-                Reliable, Ultra-Fast Courier & Parcel Delivery Nationwide
-              </h1>
+            <div className="grid items-center gap-10 lg:grid-cols-[1.1fr_0.9fr]">
 
-              <p className="mt-6 max-w-xl text-base leading-7 text-gray-600 sm:text-lg">
-                Seamless end-to-end logistics with real-time tracking, scheduled doorstep pickups, and strictly guaranteed arrival windows for individual senders and high-volume commercial enterprises.
-              </p>
+              <div>
+                <h1 className="max-w-2xl text-4xl font-bold leading-tight tracking-tight text-[#6B1F3A] sm:text-5xl lg:text-5xl">
+                  Reliable, Ultra-Fast Courier & Parcel Delivery Nationwide
+                </h1>
 
-              <div className="mt-8 rounded-2xl border border-gray-200 bg-white p-4 shadow-lg sm:p-5">
-
-                <div className="mb-4 flex items-center gap-2">
-                  <Search className="h-5 w-5 text-[#E0854C]" />
-
-                  <h2 className="text-base font-bold sm:text-lg">
-                    Track Your Parcel
-                  </h2>
-                </div>
-
-                <div className="flex flex-col gap-3 sm:flex-row">
-
-                  <div className="flex flex-1 items-center rounded-lg border border-gray-200 bg-[#EAEEFB] px-4">
-                    <Search className="h-5 w-5 text-gray-400" />
-
-                    <input
-                      type="text"
-                      placeholder="Enter your tracking number [e.g. TRK123456789]"
-                      className="w-full rounded-xl bg-[#EAEEFB] px-4 py-3 text-base text-gray-600 outline-none placeholder:font-bold placeholder:tracking-wide placeholder:text-[#6b6470] sm:text-base"
-                    />
-                  </div>
-
-                  <Link
-                    to="/track"
-                    className="flex items-center justify-center gap-2 rounded-lg bg-[#680818] px-6 py-3 text-sm font-semibold text-white transition hover:bg-[#500612] sm:text-base"
-                  >
-                    Track Parcel
-                    <ArrowRight className="h-5 w-5" />
-                  </Link>
-
-                </div>
-
-                <p className="mt-3 text-xs text-gray-400 sm:text-sm">
-                  Tracking available 24/7
+                <p className="mt-6 max-w-xl text-base leading-7 text-gray-600 sm:text-lg">
+                  Seamless end-to-end logistics with real-time tracking, scheduled
+                  doorstep pickups, and strictly guaranteed arrival windows for
+                  individual senders and high-volume commercial enterprises.
                 </p>
               </div>
 
-              <div className="mt-6 grid grid-cols-2 gap-3 sm:grid-cols-4">
-
-                <SmallStat
-                  icon={<CheckCircle />}
-                  title="99.4%"
-                  text="On-Time Arrival"
-                />
-
-                <SmallStat
-                  icon={<ShieldCheck />}
-                  title="100% Insured"
-                  text="Full Value Guard"
-                />
-
-                <SmallStat
-                  icon={<MapPin />}
-                  title="Telemetry"
-                  text="Live Fleet Radar"
-                />
-
-                <SmallStat
-                  icon={<Package />}
-                  title="2.4M+ Packages"
-                  text="Safely Handed Off"
-                />
-
-              </div>
-            </div>
-
-            <div className="relative">
-
-              <div className="overflow-hidden rounded-3xl border border-[#eadde0] bg-[#EAEEFB] p-4 shadow-xl">
-
+              <div>
                 <img
                   src="/images/homepageMain2.png"
                   alt="Trackly parcel tracking"
-                  className="h-[420px] w-full rounded-2xl object-cover sm:h-[500px]"
+                  className="h-[420px] w-full rounded-2xl object-cover shadow-lg sm:h-[500px]"
                 />
-
               </div>
+
+            </div>
+
+            <div className="mt-10 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4">
+
+              <SmallStat
+                icon={<CheckCircle />}
+                title="99.4%"
+                text="On-Time Arrival"
+              />
+
+              <SmallStat
+                icon={<ShieldCheck />}
+                title="100% Insured"
+                text="Full Value Guard"
+              />
+
+              <SmallStat
+                icon={<MapPin />}
+                title="Telemetry"
+                text="Live Fleet Radar"
+              />
+
+              <SmallStat
+                icon={<Package />}
+                title="2.4M+ Packages"
+                text="Safely Handed Off"
+              />
 
             </div>
 
