@@ -503,11 +503,10 @@ const LocationCard = ({ title, name, location, dark }) => {
     return (
         <div className="flex items-center gap-3 rounded-lg bg-[#eef0ff] p-3">
             <div
-                className={`flex h-9 w-9 shrink-0 items-center justify-center rounded-full ${
-                    dark
+                className={`flex h-9 w-9 shrink-0 items-center justify-center rounded-full ${dark
                         ? "bg-[#680818] text-white"
                         : "bg-white text-[#680818]"
-                }`}
+                    }`}
             >
                 <MapPin className="h-4 w-4" />
             </div>
@@ -545,13 +544,12 @@ const Milestone = ({ title, date, active, current }) => {
     return (
         <div className="relative z-10 flex flex-col items-center text-center">
             <div
-                className={`flex h-10 w-10 items-center justify-center rounded-full border-4 border-white ${
-                    current
+                className={`flex h-10 w-10 items-center justify-center rounded-full border-4 border-white ${current
                         ? "bg-[#e0854c] text-white shadow-[0_0_0_2px_#e0854c]"
                         : active
                             ? "bg-[#680818] text-white"
                             : "bg-[#eef0ff] text-gray-400"
-                }`}
+                    }`}
             >
                 {current ? (
                     <Truck className="h-4 w-4" />
@@ -584,9 +582,8 @@ const ActivityItem = ({
     return (
         <div className="relative pl-7">
             <div
-                className={`absolute left-0 top-1 flex h-4 w-4 items-center justify-center rounded-full border-2 border-white ${
-                    active ? "bg-[#e0854c]" : "bg-[#680818]"
-                }`}
+                className={`absolute left-0 top-1 flex h-4 w-4 items-center justify-center rounded-full border-2 border-white ${active ? "bg-[#e0854c]" : "bg-[#680818]"
+                    }`}
             >
                 <span className="h-1.5 w-1.5 rounded-full bg-white" />
             </div>
@@ -646,9 +643,8 @@ const ActionButton = ({ icon, title, text }) => {
 const StatusRow = ({ status, text, active }) => {
     return (
         <div
-            className={`flex items-center justify-between rounded px-2 py-2 ${
-                active ? "bg-[#ffe7d8]" : "bg-[#f4f3fb]"
-            }`}
+            className={`flex items-center justify-between rounded px-2 py-2 ${active ? "bg-[#ffe7d8]" : "bg-[#f4f3fb]"
+                }`}
         >
             <span className="text-[13px] font-semibold">
                 {status}

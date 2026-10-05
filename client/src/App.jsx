@@ -32,7 +32,7 @@ function AppContent() {
         <Route element={<ProtectedRoute />}>
           <Route path="/my-shipments" element={<MyShipments />} />
         </Route>
-        
+
         <Route element={<ProtectedRoute />}>
           <Route element={<AdminRoute />}>
             <Route path="/admin/dashboard" element={<AdminDashboard />} />

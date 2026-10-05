@@ -143,10 +143,37 @@ export const getMe = async (req, res) => {
 
   } catch (error) {
     console.error("GetMe error:", error);
-    
+
     res.status(500).json({
       success: false,
       message: "Server error",
     })
+  }
+};
+
+export const getCustomerCount = async (req, res) => {
+  try {
+    if (req.user.role !== "admin") {
+      return res.status(403).json({
+        success: false,
+        message: "Admin access required",
+      });
+    }
+
+    const customerCount = await User.countDocuments({
+      role: "customer",
+    });
+
+    res.status(200).json({
+      success: true,
+      customerCount,
+    });
+  } catch (error) {
+    console.error("Customer count error:", error);
+
+    res.status(500).json({
+      success: false,
+      message: "Server error",
+    });
   }
 };

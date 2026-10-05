@@ -46,7 +46,7 @@ function Navbar() {
             </div>
 
             <nav className="fixed top-8 z-50 w-full bg-white shadow-sm">
-                <div className="mx-auto flex max-w-7xl items-center justify-between px-4 py-3 sm:px-6 lg:px-10">
+                <div className="mx-auto flex max-w-7xl items-center justify-between px-4 py-4 sm:px-6 lg:px-10">
 
                     <Link
                         to="/"
@@ -129,7 +129,7 @@ function Navbar() {
                         <NavLink
                             to="/register"
                             className={({ isActive }) =>
-                                `rounded-lg px-4 py-2 text-md font-semibold text-white transition ${
+                                `rounded-full px-4 py-2 text-md font-semibold text-white transition ${
                                     isActive
                                         ? "bg-[#6b0717]"
                                         : "bg-[#680818] hover:bg-[#4f0612]"

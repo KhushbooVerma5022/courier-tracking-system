@@ -3,12 +3,9 @@ import { Link } from "react-router-dom";
 import Footer from "../components/Footer";
 import ServiceCard from "../components/ServiceCard";
 import {
-  ArrowRight,
-  ArrowUpRight,
   CheckCircle,
   MapPin,
   Package,
-  Search,
   ShieldCheck,
   Truck,
   User,
@@ -23,37 +20,50 @@ import {
 
 const Home = () => {
   return (
-    <div className="min-h-screen bg-[#faf9f7] text-[#26171a] pt-[98px]">
+    <div className="min-h-screen bg-[#faf9f7] text-[#26171a] pt-[100px]">
 
       <main>
-        <section className="px-5 py-8 sm:px-8 lg:px-20">
-          <div className="mx-auto max-w-7xl">
+        <section className="relative overflow-hidden bg-[#faf8f7] lg:min-h-[calc(100vh-96px)]">
 
-            <div className="grid items-center gap-10 lg:grid-cols-[1.1fr_0.9fr]">
+          <video
+            autoPlay
+            muted
+            loop
+            playsInline
+            className="absolute inset-0 hidden h-full w-full object-cover lg:block"
+          >
+            <source src="/images/trackly-hero.mp4" type="video/mp4" />
+          </video>
 
-              <div>
-                <h1 className="max-w-2xl text-4xl font-bold leading-tight tracking-tight text-[#6B1F3A] sm:text-5xl lg:text-5xl">
-                  Reliable, Ultra-Fast Courier & Parcel Delivery Nationwide
+          <div className="absolute inset-0 hidden lg:block" />
+
+          <div className="relative z-10 mx-auto flex max-w-7xl flex-col px-5 pb-8 pt-8 sm:px-8 lg:min-h-[calc(100vh-96px)] lg:justify-between lg:px-10 lg:pb-8 lg:pt-6">
+
+            <div className="flex flex-1 items-center">
+
+              <div className="max-w-2xl">
+
+                <p className="mb-3 text-sm font-bold uppercase tracking-[0.2em] text-[#680818] sm:text-base">
+                  Fast • Safe • Nationwide
+                </p>
+
+                <h1 className="max-w-2xl text-4xl font-bold leading-[1.08] tracking-tight text-[#24151a] sm:text-5xl lg:text-6xl">
+                  Reliable, Ultra-Fast Courier & Parcel
+                  <span className="text-[#680818]"> Delivery</span>
+                  <span className="text-[#911010]"> Nationwide</span>
                 </h1>
 
-                <p className="mt-6 max-w-xl text-base leading-7 text-gray-600 sm:text-lg">
+                <p className="mt-5 max-w-xl text-base leading-7 text-gray-600 sm:text-lg">
                   Seamless end-to-end logistics with real-time tracking, scheduled
                   doorstep pickups, and strictly guaranteed arrival windows for
                   individual senders and high-volume commercial enterprises.
                 </p>
-              </div>
 
-              <div>
-                <img
-                  src="/images/homepageMain2.png"
-                  alt="Trackly parcel tracking"
-                  className="h-[420px] w-full rounded-2xl object-cover shadow-lg sm:h-[500px]"
-                />
               </div>
 
             </div>
 
-            <div className="mt-10 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4">
+            <div className="mt-8 grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-4">
 
               <SmallStat
                 icon={<CheckCircle />}
@@ -82,38 +92,31 @@ const Home = () => {
             </div>
 
           </div>
+
         </section>
 
         <section className="border-y border-gray-200 bg-white px-5 py-14 sm:px-8 lg:px-12">
           <div className="mx-auto max-w-7xl">
 
-            <div className="mb-10 flex flex-col justify-between gap-5 sm:flex-row sm:items-end">
-              <div>
-                <p className="text-xs font-bold uppercase tracking-widest text-[#6b0717]">
-                  Precision Dispatch Matrix
-                </p>
+            <div className="mb-10 text-center">
 
-                <h2 className="mt-3 text-3xl font-bold text-[#4f0714] sm:text-4xl">
-                  Tailored Delivery Speeds for Every Package
-                </h2>
+              <p className="text-xs font-bold uppercase tracking-widest text-[#6b0717]">
+                Precision Dispatch Matrix
+              </p>
 
-                <p className="mt-3 max-w-3xl text-base leading-7 text-gray-500">
-                  Whether dispatching emergency legal documents across town or
-                  coordinating palletized bulk freight nationwide, TRACKLY provides
-                  structured courier tiers backed by zero-compromise guarantees.
-                </p>
-              </div>
+              <h2 className="mt-3 text-3xl font-bold text-[#4f0714] sm:text-4xl">
+                Tailored Delivery Speeds for Every Package
+              </h2>
 
-              <Link
-                to="/services"
-                className="flex shrink-0 items-center gap-2 text-sm font-semibold text-[#6b0717]"
-              >
-                Explore All Logistics Solutions
-                <ArrowUpRight className="h-5 w-5" />
-              </Link>
+              <p className="mx-auto mt-3 max-w-3xl text-base leading-7 text-gray-500">
+                Whether dispatching emergency legal documents across town or
+                coordinating palletized bulk freight nationwide, TRACKLY provides
+                structured courier tiers backed by zero-compromise guarantees.
+              </p>
+
             </div>
 
-            <div className="grid gap-6 md:grid-cols-3">
+            <div className="grid gap-6 md:grid-cols-3 md:auto-rows-fr">
 
               <ServiceCard
                 icon={<Truck className="h-6 w-6" />}
@@ -172,51 +175,71 @@ const Home = () => {
         <section className="bg-[#f4f1f3] px-5 py-14 sm:px-8 lg:px-12">
           <div className="mx-auto max-w-7xl">
 
-            <div className="text-center">
+            <div className="grid items-center gap-10 lg:grid-cols-[0.75fr_1.25fr] lg:gap-14">
 
-              <p className="text-xs font-bold uppercase tracking-widest text-[#6b0717]">
-                OPERATIONAL SIMPLICITY
-              </p>
+              <div className="lg:max-w-md">
 
-              <h2 className="mt-3 text-3xl font-bold text-[#4f0714] sm:text-4xl">
-                How TRACKLY Delivers in 4 Seamless Steps
-              </h2>
+                <p className="text-xs font-bold uppercase tracking-[0.2em] text-[#6b0717]">
+                  Operational Simplicity
+                </p>
 
-              <p className="mx-auto mt-3 max-w-xl text-base leading-7 text-gray-500">
-                From parcel creation to the recipient's signature, our computerized routing engine automates every micro-stage.
-              </p>
+                <h2 className="mt-4 text-3xl font-bold leading-tight text-[#4f0714] sm:text-4xl lg:text-5xl">
+                  How TRACKLY Delivers in 4 Seamless Steps
+                </h2>
 
-            </div>
+                <p className="mt-5 text-base leading-7 text-gray-500 sm:text-lg">
+                  From parcel creation to the recipient's signature, our
+                  computerized routing engine automates every micro-stage.
+                </p>
 
-            <div className="mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
+                <div className="mt-7 h-1 w-16 rounded-full bg-[#E0854C]" />
 
-              <StepCard
-                number="01"
-                icon={<CalendarDays />}
-                title="Book & Schedule"
-                description="Enter sender & recipient details in under 2 minutes. Choose your pickup slot and speed preference with automated instant waybill creation."
-              />
+                <p className="mt-6 text-sm leading-6 text-gray-500">
+                  Simple booking, reliable pickup, real-time movement and
+                  secure delivery — all connected in one smooth workflow.
+                </p>
 
-              <StepCard
-                number="02"
-                icon={<Package />}
-                title="Doorstep Pickup"
-                description="Our uniformed field courier arrives at your location with mobile scales, scans the parcel barcode, and provides physical custody receipt immediately."
-              />
+              </div>
 
-              <StepCard
-                number="03"
-                icon={<MapPin />}
-                title=" Real-Time Transit"
-                description="Watch your parcel travel in real time. Dynamic radar telemetry, airport transfers, sorting scans, and ETA updates streamed directly to your phone."
-              />
+              <div className="relative">
 
-              <StepCard
-                number="04"
-                icon={<CircleCheck />}
-                title="Secure Hand-Off"
-                description="Package delivered safely to recipient's hands or secured locker with digital e-signature capture, timestamp stamp, and instant photo confirmation."
-              />
+                <div className="absolute -left-4 top-1/2 hidden h-[70%] w-px -translate-y-1/2 bg-[#d9c8cd] lg:block" />
+
+                <div className="absolute left-1/2 top-1/2 hidden h-px w-[82%] -translate-x-1/2 -translate-y-1/2 bg-[#d9c8cd] lg:block" />
+
+                <div className="grid gap-5 sm:grid-cols-2">
+
+                  <StepCard
+                    number="01"
+                    icon={<CalendarDays />}
+                    title="Book & Schedule"
+                    description="Enter sender & recipient details in under 2 minutes. Choose your pickup slot and speed preference with automated instant waybill creation."
+                  />
+
+                  <StepCard
+                    number="02"
+                    icon={<Package />}
+                    title="Doorstep Pickup"
+                    description="Our uniformed field courier arrives at your location with mobile scales, scans the parcel barcode, and provides physical custody receipt immediately."
+                  />
+
+                  <StepCard
+                    number="03"
+                    icon={<MapPin />}
+                    title="Real-Time Transit"
+                    description="Watch your parcel travel in real time. Dynamic radar telemetry, airport transfers, sorting scans, and ETA updates streamed directly to your phone."
+                  />
+
+                  <StepCard
+                    number="04"
+                    icon={<CircleCheck />}
+                    title="Secure Hand-Off"
+                    description="Package delivered safely to recipient's hands or secured locker with digital e-signature capture, timestamp stamp, and instant photo confirmation."
+                  />
+
+                </div>
+
+              </div>
 
             </div>
 
@@ -525,18 +548,18 @@ const Home = () => {
 
 const SmallStat = ({ icon, title, text }) => {
   return (
-    <div className="flex items-center gap-1 rounded-lg border border-gray-100 bg-white px-2 shadow-sm">
+    <div className="flex min-h-[88px] items-center gap-4 rounded-xl border border-white/70 bg-white/80 px-5 py-4 shadow-sm backdrop-blur-md sm:min-h-[96px]">
 
-      <div className="shrink-0 text-[#E0854C]">
-        {React.cloneElement(icon, { size: 21 })}
+      <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full bg-[#f8e7eb] text-[#680818]">
+        {icon}
       </div>
 
       <div>
-        <p className="text-sm font-semi-bold text-[#4f0714] sm:text-base">
+        <h3 className="text-lg font-bold text-[#24151a] sm:text-xl">
           {title}
-        </p>
+        </h3>
 
-        <p className="text-xs text-gray-400 sm:text-sm">
+        <p className="mt-1 text-[13px] font-medium text-gray-500 sm:text-sm">
           {text}
         </p>
       </div>

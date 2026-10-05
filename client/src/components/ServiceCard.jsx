@@ -13,11 +13,10 @@ const ServiceCard = ({
 }) => {
   return (
     <div
-      className={`relative flex h-full flex-col rounded-2xl border bg-white p-6 shadow-sm ${
-        featured
+      className={`relative flex h-full flex-col rounded-2xl border bg-white p-6 shadow-sm ${featured
           ? "border-[#6b0717] shadow-md"
           : "border-gray-200"
-      }`}
+        }`}
     >
       {featured && (
         <span className="absolute -top-3 left-6 rounded-full bg-[#6b0717] px-4 py-1 text-xs font-bold uppercase tracking-wide text-white">
@@ -43,18 +42,17 @@ const ServiceCard = ({
         {description}
       </p>
 
-      <div className="mt-5 space-y-2">
+      <div className="mt-5 flex-1 space-y-2">
         {features.map((feature, index) => (
           <div
             key={index}
             className="flex items-start gap-2 text-sm text-gray-600"
           >
             <span
-              className={`mt-0.5 font-bold ${
-                featured
+              className={`mt-0.5 font-bold ${featured
                   ? "text-[#E0854C]"
                   : "text-[#6b0717]"
-              }`}
+                }`}
             >
               →
             </span>
