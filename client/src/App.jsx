@@ -11,6 +11,8 @@ import AdminDashboard from "./pages/admin/AdminDashboard";
 import ProtectedRoute from "./components/auth/ProtectedRoute";
 import AdminRoute from "./components/auth/AdminRoute";
 import MyShipments from "./pages/MyShipments";
+import Shipments from "./pages/admin/Shipments";
+import AdminLayout from "./components/admin/AdminLayout";
 
 function AppContent() {
   const location = useLocation();
@@ -35,9 +37,13 @@ function AppContent() {
 
         <Route element={<ProtectedRoute />}>
           <Route element={<AdminRoute />}>
-            <Route path="/admin/dashboard" element={<AdminDashboard />} />
+            <Route element={<AdminLayout />}>
+              <Route path="/admin/dashboard" element={<AdminDashboard />} />
+              <Route path="/admin/shipments" element={<Shipments />} />
+            </Route>
           </Route>
         </Route>
+
       </Routes>
     </>
   );

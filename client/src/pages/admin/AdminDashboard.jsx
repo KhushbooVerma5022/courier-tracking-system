@@ -12,7 +12,7 @@ import {
     CircleCheck,
 } from "lucide-react";
 import { useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
 
 const menuSections = [
     {
@@ -46,6 +46,7 @@ const menuSections = [
 function AdminDashboard() {
     const [showLogoutModal, setShowLogoutModal] = useState(false);
     const navigate = useNavigate();
+    const location = useLocation();
     const [stats, setStats] = useState({
         totalShipments: 0,
         pendingShipments: 0,
@@ -209,14 +210,27 @@ function AdminDashboard() {
 
                                 {section.items.map((item) => {
                                     const Icon = item.icon;
-                                    const active = item.name === "Dashboard";
+
+                                    const pathMap = {
+                                        Dashboard: "/admin/dashboard",
+                                        Shipments: "/admin/shipments",
+                                    };
+
+                                    const itemPath = pathMap[item.name];
+
+                                    const active = itemPath === location.pathname;
 
                                     return (
                                         <button
                                             key={item.name}
+                                            onClick={() => {
+                                                if (itemPath) {
+                                                    navigate(itemPath);
+                                                }
+                                            }}
                                             className={`group flex w-full items-center justify-between rounded-lg px-3 py-2.5 text-left transition ${active
-                                                ? "bg-white text-[#132142]"
-                                                : "text-white/70 hover:bg-white/10 hover:text-white"
+                                                    ? "bg-white text-[#132142]"
+                                                    : "text-white/70 hover:bg-white/10 hover:text-white"
                                                 }`}
                                         >
 
@@ -224,8 +238,8 @@ function AdminDashboard() {
 
                                                 <Icon
                                                     className={`h-5 w-5 ${active
-                                                        ? "text-[#132142]"
-                                                        : "text-white/60 group-hover:text-white"
+                                                            ? "text-[#132142]"
+                                                            : "text-white/60 group-hover:text-white"
                                                         }`}
                                                 />
 
