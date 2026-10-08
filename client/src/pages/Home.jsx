@@ -175,9 +175,9 @@ const Home = () => {
         <section className="bg-[#f4f1f3] px-5 py-14 sm:px-8 lg:px-12">
           <div className="mx-auto max-w-7xl">
 
-            <div className="grid items-center gap-10 lg:grid-cols-[0.75fr_1.25fr] lg:gap-14">
+            <div className="grid items-center gap-10 lg:grid-cols-2 lg:gap-2">
 
-              <div className="lg:max-w-md">
+              <div className="lg:max-w-lg">
 
                 <p className="text-xs font-bold uppercase tracking-[0.2em] text-[#6b0717]">
                   Operational Simplicity
