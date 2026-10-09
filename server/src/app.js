@@ -4,7 +4,8 @@ import cookieParser from 'cookie-parser';
 import authRoutes from './routes/authRoutes.js';
 import adminRoutes from './routes/adminRoutes.js';
 import shipmentRoutes from './routes/shipmentRoutes.js';
-import trackingRoutes from './routes/trackingRoutes.js'
+import trackingRoutes from './routes/trackingRoutes.js';
+import serviceRoutes from "./routes/serviceRoutes.js";
 
 const app = express();
 
@@ -25,5 +26,6 @@ app.use("/api/v1/auth", authRoutes);
 app.use("/api/v1/admin", adminRoutes);
 app.use("/api/v1/shipments", shipmentRoutes);
 app.use("/api/v1/tracking", trackingRoutes);
+app.use("/api/v1/services", serviceRoutes);
 
 export default app;
