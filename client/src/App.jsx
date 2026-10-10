@@ -14,6 +14,7 @@ import MyShipments from "./pages/MyShipments";
 import Shipments from "./pages/admin/Shipments";
 import AdminLayout from "./components/admin/AdminLayout";
 import TrackingUpdates from "./pages/admin/TrackingUpdates";
+import ServicesManagement from "./pages/admin/ServicesManagement";
 
 function AppContent() {
   const location = useLocation();
@@ -42,6 +43,7 @@ function AppContent() {
               <Route path="/admin/dashboard" element={<AdminDashboard />} />
               <Route path="/admin/shipments" element={<Shipments />} />
               <Route path="/admin/tracking" element={<TrackingUpdates />} />
+              <Route path="/admin/services" element={<ServicesManagement />} />
             </Route>
           </Route>
         </Route>

@@ -246,113 +246,118 @@ const Home = () => {
           </div>
         </section>
 
-        <section className="bg-white px-5 py-14 sm:px-8 lg:px-12">
-          <div className="mx-auto grid max-w-7xl items-center gap-10 lg:grid-cols-2">
+        <section className="bg-white px-5 py-10 sm:px-8 lg:px-12">
+          <div className="mx-auto max-w-7xl">
 
-            <div className="overflow-hidden rounded-2xl">
-              <div className="relative">
-                <img
-                  src="/images/HomeAdvantage.jpg"
-                  alt="Trackly logistics"
-                  className="h-[280px] w-full object-cover sm:h-[300px]"
-                />
+            <p className="mb-8 text-center text-md font-bold uppercase tracking-widest text-[#6b0717]">
+              Why TRACKLY
+            </p>
 
-                <div className="absolute inset-x-0 bottom-0 h-32 bg-gradient-to-t from-black/70 via-black/30 to-transparent" />
+            <div className="grid items-stretch gap-10 lg:grid-cols-2">
 
-                <div className="absolute bottom-5 left-5 max-w-md sm:bottom-7 sm:left-7">
-                  <p className="text-xs font-bold uppercase tracking-[0.18em] text-[#F9C8BD]">
-                    Automated Sorting Technology
-                  </p>
+              <div className="flex h-full flex-col overflow-hidden rounded-2xl">
 
-                  <h3 className="mt-1 text-xl font-bold text-white sm:text-2xl">
-                    22 National Regional Hubs
-                  </h3>
+                <div className="relative">
+                  <img
+                    src="/images/HomeAdvantage.jpg"
+                    alt="Trackly logistics"
+                    className="h-[280px] w-full object-cover sm:h-[300px]"
+                  />
 
-                  <p className="mt-1 text-xs leading-5 text-gray-200 sm:text-sm">
-                    Cross-dock sorting completed in under 45 minutes per shipment batch.
-                  </p>
+                  <div className="absolute inset-x-0 bottom-0 h-32 bg-gradient-to-t from-black/70 via-black/30 to-transparent" />
+
+                  <div className="absolute bottom-5 left-5 max-w-md sm:bottom-7 sm:left-7">
+                    <p className="text-xs font-bold uppercase tracking-[0.18em] text-[#F9C8BD]">
+                      Automated Sorting Technology
+                    </p>
+
+                    <h3 className="mt-1 text-xl font-bold text-white sm:text-2xl">
+                      22 National Regional Hubs
+                    </h3>
+
+                    <p className="mt-1 text-xs leading-5 text-gray-200 sm:text-sm">
+                      Cross-dock sorting completed in under 45 minutes per shipment batch.
+                    </p>
+                  </div>
+                </div>
+
+                <div className="grid flex-1 grid-cols-1 gap-4 pt-4 sm:grid-cols-2">
+
+                  <div className="flex min-h-[120px] items-center gap-4 rounded-xl border border-gray-200 bg-white p-4 shadow-sm">
+                    <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full bg-[#fff1e9]">
+                      <Thermometer className="h-5 w-5 text-[#E0854C]" />
+                    </div>
+
+                    <div>
+                      <h6 className="text-lg font-bold text-[#4f0714]">
+                        100%
+                      </h6>
+
+                      <p className="mt-0.5 text-sm font-semibold text-[#4f0714]">
+                        Climate Monitored
+                      </p>
+
+                      <p className="mt-1 text-xs leading-5 text-gray-500">
+                        Pharma & perishable cargo vaults maintained at exact tolerances.
+                      </p>
+                    </div>
+                  </div>
+
+                  <div className="flex min-h-[120px] items-center gap-4 rounded-xl border border-gray-200 bg-white p-4 shadow-sm">
+                    <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full bg-[#fff1e9]">
+                      <ShieldCheck className="h-5 w-5 text-[#E0854C]" />
+                    </div>
+
+                    <div>
+                      <h6 className="text-lg font-bold text-[#4f0714]">
+                        256-Bit
+                      </h6>
+
+                      <p className="mt-0.5 text-sm font-semibold text-[#4f0714]">
+                        Chain of Custody
+                      </p>
+
+                      <p className="mt-1 text-xs leading-5 text-gray-500">
+                        Cryptographic tracking events logged on immutable logistics ledger.
+                      </p>
+                    </div>
+                  </div>
+
                 </div>
               </div>
 
-              <div className="grid grid-cols-1 gap-4 pt-4 sm:grid-cols-2">
+              <div className="flex h-full flex-col justify-center">
 
-                <div className="flex min-h-[120px] items-center gap-4 rounded-xl border border-gray-200 bg-white p-4 shadow-sm">
-                  <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full bg-[#fff1e9]">
-                    <Thermometer className="h-5 w-5 text-[#E0854C]" />
-                  </div>
+                <h2 className="text-3xl font-bold leading-tight text-[#4f0714] sm:text-4xl">
+                  Built Around Reliability and Transparency
+                </h2>
 
-                  <div>
-                    <h6 className="text-lg font-bold text-[#4f0714]">
-                      100%
-                    </h6>
+                <p className="mt-4 text-base leading-7 text-gray-600">
+                  TRACKLY makes courier delivery easier by keeping customers
+                  informed from pickup to final delivery.
+                </p>
 
-                    <p className="mt-0.5 text-sm font-semibold text-[#4f0714]">
-                      Climate Monitored
-                    </p>
+                <div className="mt-7 space-y-4">
 
-                    <p className="mt-1 text-xs leading-5 text-gray-500">
-                      Pharma & perishable cargo vaults maintained at exact tolerances.
-                    </p>
-                  </div>
+                  <Advantage
+                    icon={<ShieldCheck />}
+                    title="Secure Shipments"
+                    text="Your shipment information is handled securely throughout the delivery process."
+                  />
+
+                  <Advantage
+                    icon={<MapPin />}
+                    title="Real-Time Tracking"
+                    text="Track your parcel and view its current delivery status."
+                  />
+
+                  <Advantage
+                    icon={<Headphones />}
+                    title="Customer Support"
+                    text="Get assistance whenever you need help with your shipment."
+                  />
+
                 </div>
-
-                <div className="flex min-h-[120px] items-center gap-4 rounded-xl border border-gray-200 bg-white p-4 shadow-sm">
-                  <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full bg-[#fff1e9]">
-                    <ShieldCheck className="h-5 w-5 text-[#E0854C]" />
-                  </div>
-
-                  <div>
-                    <h6 className="text-lg font-bold text-[#4f0714]">
-                      256-Bit
-                    </h6>
-
-                    <p className="mt-0.5 text-sm font-semibold text-[#4f0714]">
-                      Chain of Custody
-                    </p>
-
-                    <p className="mt-1 text-xs leading-5 text-gray-500">
-                      Cryptographic tracking events logged on immutable logistics ledger.
-                    </p>
-                  </div>
-                </div>
-
-              </div>
-            </div>
-
-            <div>
-
-              <p className="text-xs font-bold uppercase tracking-widest text-[#6b0717]">
-                Why TRACKLY
-              </p>
-
-              <h2 className="mt-3 text-3xl font-bold leading-tight text-[#4f0714] sm:text-4xl">
-                Built Around Reliability and Transparency
-              </h2>
-
-              <p className="mt-4 text-base leading-7 text-gray-600">
-                TRACKLY makes courier delivery easier by keeping customers
-                informed from pickup to final delivery.
-              </p>
-
-              <div className="mt-7 space-y-4">
-
-                <Advantage
-                  icon={<ShieldCheck />}
-                  title="Secure Shipments"
-                  text="Your shipment information is handled securely throughout the delivery process."
-                />
-
-                <Advantage
-                  icon={<MapPin />}
-                  title="Real-Time Tracking"
-                  text="Track your parcel and view its current delivery status."
-                />
-
-                <Advantage
-                  icon={<Headphones />}
-                  title="Customer Support"
-                  text="Get assistance whenever you need help with your shipment."
-                />
 
               </div>
 
