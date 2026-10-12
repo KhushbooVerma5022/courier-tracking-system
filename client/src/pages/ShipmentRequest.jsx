@@ -578,7 +578,7 @@ const RequestShipment = () => {
                                         <ServiceOption
                                             title="Standard"
                                             subtitle="2–3 Business Days"
-                                            price="$14.50"
+                                            price="₹14.50"
                                             selected={service === "Standard"}
                                             onClick={() => setService("Standard")}
                                         />
@@ -586,7 +586,7 @@ const RequestShipment = () => {
                                         <ServiceOption
                                             title="Express Next-Day"
                                             subtitle="Guaranteed by 12 PM"
-                                            price="$29.00"
+                                            price="₹29.00"
                                             selected={service === "Express Next-Day"}
                                             recommended
                                             onClick={() =>
@@ -597,7 +597,7 @@ const RequestShipment = () => {
                                         <ServiceOption
                                             title="Same-Day Rush"
                                             subtitle="Select Metro Dispatch"
-                                            price="$48.00"
+                                            price="₹48.00"
                                             selected={service === "Same-Day Rush"}
                                             onClick={() =>
                                                 setService("Same-Day Rush")
@@ -739,26 +739,26 @@ const RequestShipment = () => {
                                             label="Base courier rate"
                                             value={
                                                 service === "Express Next-Day"
-                                                    ? "$29.00"
+                                                    ? "₹29.00"
                                                     : service === "Same-Day Rush"
-                                                        ? "$48.00"
-                                                        : "$14.50"
+                                                        ? "₹48.00"
+                                                        : "₹14.50"
                                             }
                                         />
 
                                         <SummaryRow
                                             label="Weight surcharge (4.2kg)"
-                                            value="$6.40"
+                                            value="₹6.40"
                                         />
 
                                         <SummaryRow
                                             label="Value protection & insurance"
-                                            value="$4.00"
+                                            value="₹4.00"
                                         />
 
                                         <SummaryRow
                                             label="Signature confirmation"
-                                            value="$2.50"
+                                            value="₹2.50"
                                         />
 
                                     </div>
@@ -776,7 +776,7 @@ const RequestShipment = () => {
                                             </div>
 
                                             <p className="text-2xl font-bold text-[#680818] sm:text-3xl">
-                                                $41.90
+                                                ₹41.90
                                             </p>
                                         </div>
                                     </div>

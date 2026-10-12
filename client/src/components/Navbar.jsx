@@ -1,28 +1,45 @@
-import { useState } from "react";
-import { NavLink, Link } from "react-router-dom";
+import { useState, useEffect } from "react";
+import { NavLink, Link, useLocation } from "react-router-dom";
 import { Menu, X, Package } from "lucide-react";
+
+const getAuthInfo = () => {
+    const token = localStorage.getItem("token");
+    let role = "";
+
+    try {
+        const user = JSON.parse(localStorage.getItem("user") || "{}");
+        role = user.role || "";
+    } catch {
+        role = "";
+    }
+
+    return { token, role };
+};
 
 function Navbar() {
     const [menuOpen, setMenuOpen] = useState(false);
+    const [auth, setAuth] = useState(getAuthInfo);
+    const location = useLocation();
 
-    const token = localStorage.getItem("token");
+    useEffect(() => {
+        setAuth(getAuthInfo());
+        setMenuOpen(false);
+    }, [location.pathname]);
 
     const closeMenu = () => {
         setMenuOpen(false);
     };
 
     const navClass = ({ isActive }) =>
-        `text-md font-semibold transition ${
-            isActive
-                ? "text-[#6b0717]"
-                : "text-gray-600 hover:text-[#6b0717]"
+        `text-md font-semibold transition ${isActive
+            ? "text-[#6b0717]"
+            : "text-gray-600 hover:text-[#6b0717]"
         }`;
 
     const mobileNavClass = ({ isActive }) =>
-        `border-b border-gray-100 py-3 text-sm font-semibold transition ${
-            isActive
-                ? "text-[#6b0717]"
-                : "text-gray-700 hover:text-[#6b0717]"
+        `border-b border-gray-100 py-3 text-sm font-semibold transition ${isActive
+            ? "text-[#6b0717]"
+            : "text-gray-700 hover:text-[#6b0717]"
         }`;
 
     return (
@@ -47,7 +64,6 @@ function Navbar() {
 
             <nav className="fixed top-8 z-50 w-full bg-white shadow-sm">
                 <div className="mx-auto flex max-w-7xl items-center justify-between px-4 py-4 sm:px-6 lg:px-10">
-
                     <Link
                         to="/"
                         onClick={closeMenu}
@@ -69,87 +85,64 @@ function Navbar() {
                     </Link>
 
                     <div className="hidden items-center gap-7 lg:flex">
-
-                        <NavLink
-                            to="/"
-                            end
-                            className={navClass}
-                        >
+                        <NavLink to="/" end className={navClass}>
                             Home
                         </NavLink>
 
-                        <NavLink
-                            to="/about"
-                            className={navClass}
-                        >
+                        <NavLink to="/about" className={navClass}>
                             About Us
                         </NavLink>
 
-                        <NavLink
-                            to="/shipment-request"
-                            className={navClass}
-                        >
+                        <NavLink to="/shipment-request" className={navClass}>
                             Request Shipment
                         </NavLink>
 
-                        <NavLink
-                            to="/services"
-                            className={navClass}
-                        >
+                        <NavLink to="/services" className={navClass}>
                             Services
                         </NavLink>
 
-                        <NavLink
-                            to="/tracking"
-                            className={navClass}
-                        >
+                        <NavLink to="/tracking" className={navClass}>
                             Track Parcel
                         </NavLink>
 
-                        {token && (
-                            <NavLink
-                                to="/my-shipments"
-                                className={navClass}
-                            >
+                        {auth.token && auth.role === "customer" && (
+                            <NavLink to="/my-shipments" className={navClass}>
                                 My Shipments
                             </NavLink>
                         )}
 
+                        {auth.token && auth.role === "admin" && (
+                            <NavLink to="/admin/dashboard" className={navClass}>
+                                Admin Dashboard
+                            </NavLink>
+                        )}
                     </div>
 
                     <div className="hidden items-center gap-4 lg:flex">
-
-                        <NavLink
-                            to="/login"
-                            className={navClass}
-                        >
+                        <NavLink to="/login" className={navClass}>
                             Login
                         </NavLink>
 
                         <NavLink
                             to="/register"
                             className={({ isActive }) =>
-                                `rounded-full px-4 py-2 text-md font-semibold text-white transition ${
-                                    isActive
-                                        ? "bg-[#6b0717]"
-                                        : "bg-[#680818] hover:bg-[#4f0612]"
+                                `rounded-full px-4 py-2 text-md font-semibold text-white transition ${isActive
+                                    ? "bg-[#6b0717]"
+                                    : "bg-[#680818] hover:bg-[#4f0612]"
                                 }`
                             }
                         >
                             Register
                         </NavLink>
-
                     </div>
 
                     <div className="flex items-center gap-2 lg:hidden">
-
                         <NavLink
                             to="/register"
                             className={({ isActive }) =>
-                                `rounded-lg px-3 py-1.5 text-xs font-semibold text-white ${
-                                    isActive
-                                        ? "bg-[#6b0717]"
-                                        : "bg-[#680818]"
+                                `rounded-lg px-3 py-1.5 text-xs font-semibold text-white ${isActive
+                                    ? "bg-[#6b0717]"
+                                    : "bg-[#680818]"
                                 }`
                             }
                         >
@@ -157,7 +150,10 @@ function Navbar() {
                         </NavLink>
 
                         <button
+                            type="button"
                             onClick={() => setMenuOpen(!menuOpen)}
+                            aria-label="Toggle navigation menu"
+                            aria-expanded={menuOpen}
                             className="flex h-9 w-9 items-center justify-center rounded-lg border border-gray-200 text-[#6b0717]"
                         >
                             {menuOpen ? (
@@ -166,15 +162,12 @@ function Navbar() {
                                 <Menu className="h-5 w-5" />
                             )}
                         </button>
-
                     </div>
                 </div>
 
                 {menuOpen && (
                     <div className="border-t border-gray-100 bg-white px-4 py-3 shadow-md lg:hidden">
-
                         <div className="flex flex-col">
-
                             <NavLink
                                 to="/"
                                 end
@@ -200,13 +193,23 @@ function Navbar() {
                                 Track Parcel
                             </NavLink>
 
-                            {token && (
+                            {auth.token && auth.role === "customer" && (
                                 <NavLink
                                     to="/my-shipments"
                                     onClick={closeMenu}
                                     className={mobileNavClass}
                                 >
                                     My Shipments
+                                </NavLink>
+                            )}
+
+                            {auth.token && auth.role === "admin" && (
+                                <NavLink
+                                    to="/admin/dashboard"
+                                    onClick={closeMenu}
+                                    className={mobileNavClass}
+                                >
+                                    Admin Dashboard
                                 </NavLink>
                             )}
 
@@ -233,7 +236,6 @@ function Navbar() {
                             >
                                 Login
                             </NavLink>
-
                         </div>
                     </div>
                 )}

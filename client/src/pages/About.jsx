@@ -7,6 +7,7 @@ import {
     Package,
     Route,
     ShieldCheck,
+    CheckCircle,
     Truck,
     Zap,
 } from "lucide-react";
@@ -485,52 +486,72 @@ const About = () => {
                 </div>
             </section>
 
-            <section className="px-5 pb-12 sm:px-8 lg:px-12">
-                <div className="mx-auto flex max-w-7xl flex-col gap-8 rounded-xl bg-[#680818] px-6 py-10 text-white shadow-lg sm:px-10 lg:flex-row lg:items-center lg:justify-between">
+          <section className="px-5 pb-12 sm:px-8 lg:px-12">
+  <div className="mx-auto grid max-w-7xl items-center gap-8 overflow-hidden rounded-xl bg-[#680818] px-6 py-8 text-white shadow-lg sm:px-10 sm:py-10 lg:grid-cols-[1.5fr_0.7fr]">
 
-                    <div className="max-w-2xl">
-                        <span className="inline-flex rounded-full bg-white/10 px-3 py-2 text-[10px] font-bold uppercase tracking-wider text-[#ffd5c8]">
-                            Enterprise Freight & Courier Scale
-                        </span>
+    {/* Left Content */}
+    <div className="max-w-2xl">
+      <span className="inline-flex rounded-full bg-white/10 px-3 py-2 text-[10px] font-bold uppercase tracking-wider text-[#ffd5c8]">
+        Enterprise Freight & Courier Scale
+      </span>
 
-                        <h2 className="mt-4 text-3xl font-bold leading-tight sm:text-4xl">
-                            Ready to Transform Your Shipping
-                            <span className="block">
-                                & Logistics?
-                            </span>
-                        </h2>
+      <h2 className="mt-4 text-3xl font-bold leading-tight sm:text-4xl">
+        Ready to Transform Your Shipping
+        <span className="block">& Logistics?</span>
+      </h2>
 
-                        <p className="mt-3 text-md leading-5 text-white/70">
-                            Experience the precision of zero-discrepancy
-                            fulfillment. Connect directly with our logistics
-                            team for custom shipping requirements and API
-                            integrations.
-                        </p>
+      <p className="mt-3 text-sm leading-6 text-white/70 sm:text-base">
+        Experience the precision of zero-discrepancy
+        fulfillment. Connect directly with our logistics
+        team for custom shipping requirements and API
+        integrations.
+      </p>
 
-                        <div className="mt-6 flex flex-wrap gap-3">
-                            <Link
-                                to="/shipment-request"
-                                className="flex items-center gap-2 rounded-lg bg-[#ff9d35] px-5 py-3 text-md font-bold text-white transition hover:bg-[#f28b20]"
-                            >
-                                Request Custom Corporate Tariff
-                                <ArrowRight className="h-4 w-4" />
-                            </Link>
+      <div className="mt-6 flex flex-wrap gap-3">
+        <Link
+          to="/shipment-request"
+          className="flex items-center gap-2 rounded-lg bg-[#ff9d35] px-5 py-3 text-sm font-bold text-white transition hover:bg-[#f28b20]"
+        >
+          Request Custom Corporate Tariff
+          <ArrowRight className="h-4 w-4" />
+        </Link>
 
-                            <Link
-                                to="/services"
-                                className="rounded-lg bg-white/10 px-5 py-3 text-md font-bold text-white transition hover:bg-white/20"
-                            >
-                                Explore Standard Services
-                            </Link>
-                        </div>
-                    </div>
+        <Link
+          to="/services"
+          className="rounded-lg bg-white/10 px-5 py-3 text-sm font-bold text-white transition hover:bg-white/20"
+        >
+          Explore Standard Services
+        </Link>
+      </div>
+    </div>
 
-                    <div className="hidden lg:block">
-                        <Package className="h-40 w-40 text-white/10" />
-                    </div>
+    {/* Right Side Illustration */}
+    <div className="relative hidden h-64 items-center justify-center lg:flex">
+      <div className="absolute h-52 w-52 rounded-full border border-white/15 bg-white/5" />
+      <div className="absolute h-40 w-40 rounded-full border border-white/20" />
 
-                </div>
-            </section>
+      <div className="relative flex h-32 w-32 items-center justify-center rounded-3xl border border-white/20 bg-white/10 shadow-xl">
+        <Package
+          className="h-24 w-24 text-[#ffd78c]"
+          strokeWidth={1.3}
+        />
+      </div>
+
+      <div className="absolute right-5 top-5 flex h-14 w-14 items-center justify-center rounded-2xl bg-white text-[#680818] shadow-lg">
+        <Truck className="h-8 w-8" />
+      </div>
+
+      <div className="absolute bottom-5 left-5 flex h-12 w-12 items-center justify-center rounded-2xl bg-[#ffd78c] text-[#680818] shadow-lg">
+        <MapPin className="h-6 w-6" />
+      </div>
+
+      <div className="absolute bottom-5 right-5 flex h-11 w-11 items-center justify-center rounded-full border-2 border-[#680818] bg-emerald-400 text-white shadow-lg">
+        <CheckCircle className="h-6 w-6" />
+      </div>
+    </div>
+
+  </div>
+</section>
 
             <Footer />
 

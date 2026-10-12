@@ -1,18 +1,14 @@
 import {
     LayoutDashboard,
     Package,
-    MapPin,
-    Truck,
-    Images,
     Users,
-    UserCircle,
     LogOut,
-    ChevronRight,
     Clock3,
+    House,
     CircleCheck,
 } from "lucide-react";
 import { useEffect, useState } from "react";
-import { useNavigate, useLocation } from "react-router-dom";
+import { Link, useNavigate, useLocation } from "react-router-dom";
 
 function AdminDashboard() {
     const [showLogoutModal, setShowLogoutModal] = useState(false);
@@ -148,15 +144,25 @@ function AdminDashboard() {
 
             <main className="min-w-0 flex-1 overflow-y-auto">
 
-                <div className="border-b border-gray-200 bg-white px-5 py-4 sm:px-7">
+                <div className="flex flex-col gap-4 border-b border-gray-200 bg-white px-5 py-4 sm:flex-row sm:items-center sm:justify-between sm:px-7">
 
-                    <h2 className="text-2xl font-bold text-[#4f0714] sm:text-3xl">
-                        Dashboard
-                    </h2>
+                    <div>
+                        <h2 className="text-2xl font-bold text-[#4f0714] sm:text-3xl">
+                            Dashboard
+                        </h2>
 
-                    <p className="mt-1 text-sm text-gray-500">
-                        Overview of Trackly shipments and customer activity.
-                    </p>
+                        <p className="mt-1 text-sm text-gray-500">
+                            Manage Trackly shipments and operations.
+                        </p>
+                    </div>
+
+                    <Link
+                        to="/"
+                        className="flex w-fit items-center gap-2 rounded-lg border border-gray-200 px-4 py-2.5 text-sm font-semibold text-[#680818] transition hover:bg-[#f8f7fc]"
+                    >
+                        <House className="h-4 w-4" />
+                        Home Page
+                    </Link>
 
                 </div>
 

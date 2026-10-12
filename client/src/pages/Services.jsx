@@ -3,12 +3,11 @@ import { Link } from "react-router-dom";
 import {
   ArrowRight,
   Check,
-  Clock3,
-  Headphones,
   MapPin,
   Package,
   ShieldCheck,
   Thermometer,
+  CheckCircle, 
   Truck,
   Warehouse,
 } from "lucide-react";
@@ -51,10 +50,8 @@ const logistics = [
 
 const matrixRows = [
   ["Transit Window", "2–3 Business Days", "Next Business Day", "Custom Schedule"],
-  ["Doorstep Collection", "✓", "✓", "✓"],
   ["Included Daily Window", "✓", "✓", "Scheduled"],
   ["Priority Hour Window", "—", "✓", "Custom"],
-  ["Dedicated Dock / Tailgate", "—", "—", "✓"],
   ["Live GPS Tracking", "Station Milestone Scans", "Real-Time Live Driver Map", "Continuous Fleet Telematics"],
   ["Max Weight per Item", "Up to 30kg", "Up to 50kg", "Unlimited / Palletized Cargo"],
   ["Included Insurance", "Up to $100 Included", "Up to $2,500 Included", "Custom Commercial Cargo Policy"],
@@ -153,94 +150,34 @@ const Services = () => {
       <section className="border-b border-[#e8e4f0] bg-gradient-to-br from-[#f8f7ff] via-[#faf8fc] to-[#f6eef2] px-5 py-12 sm:px-8 lg:px-12">
         <div className="mx-auto max-w-7xl">
 
-          <div className="flex flex-col gap-8 lg:flex-row lg:items-end lg:justify-between">
+          <div className="flex flex-col items-center text-center">
 
-            <div className="max-w-3xl">
-
-              <div className="mb-4 inline-flex items-center gap-2 rounded-full bg-white px-3 py-2 text-[12px] font-bold uppercase tracking-wider text-[#6b0717] shadow-sm">
-                <span className="h-1.5 w-1.5 rounded-full bg-[#6b0717]" />
-                Enterprise & Domestic Courier Solutions
-              </div>
-
-              <h1 className="text-3xl font-bold leading-tight text-[#18151c] sm:text-4xl">
-                Precision Delivery Services
-                <span className="block text-[#680818]">
-                  Tailored for Every Package
-                </span>
-              </h1>
-
-              <p className="mt-4 max-w-3xl text-sm leading-6 text-gray-500 sm:text-base">
-                Whether you require guaranteed same-day urgent dispatch,
-                nationwide express air corridors, or heavy LTL freight
-                logistics, TRACKLY delivers with transparent operational
-                control and zero-compromise security.
-              </p>
-
+            <div className="mb-4 inline-flex items-center gap-2 rounded-full bg-white px-3 py-2 text-[12px] font-bold uppercase tracking-wider text-[#6b0717] shadow-sm">
+              <span className="h-1.5 w-1.5 rounded-full bg-[#6b0717]" />
+              Enterprise & Domestic Courier Solutions
             </div>
+
+            <h1 className="text-3xl font-bold leading-tight text-[#18151c] sm:text-4xl lg:text-5xl">
+              Precision Delivery Services
+              <span className="mt-1 block text-[#680818]">
+                Tailored for Every Package
+              </span>
+            </h1>
+
+            <p className="mt-4 max-w-3xl text-sm leading-7 text-gray-500 sm:text-base">
+              Whether you require guaranteed same-day urgent dispatch,
+              nationwide express air corridors, or heavy LTL freight
+              logistics, TRACKLY delivers with transparent operational
+              control and zero-compromise security.
+            </p>
 
             <Link
               to="/shipment-request"
-              className="flex w-fit items-center gap-2 rounded-lg bg-[#680818] px-5 py-3 text-lg font-bold text-white transition hover:bg-[#500612]"
+              className="mt-7 inline-flex items-center justify-center gap-2 rounded-lg bg-[#680818] px-6 py-3 text-base font-bold text-white shadow-md transition hover:bg-[#500612] sm:text-lg"
             >
               Instant Rate Estimator
-              <ArrowRight className="h-4 w-4" />
+              <ArrowRight className="h-5 w-5" />
             </Link>
-
-          </div>
-
-          <div className="mt-8 grid grid-cols-2 gap-3 lg:grid-cols-4">
-
-            <div className="flex items-center gap-3 rounded-lg bg-white p-4 shadow-sm sm:gap-5">
-              <div className="rounded-lg bg-[#fff0f2] p-2 text-[#680818]">
-                <Clock3 className="h-7 w-7" />
-              </div>
-
-              <div>
-                <p className="text-lg font-bold">99.4%</p>
-                <p className="text-[10px] font-semibold uppercase text-[#680818]">
-                  On-Time SLA Guarantee
-                </p>
-              </div>
-            </div>
-
-            <div className="flex items-center gap-3 rounded-lg bg-white p-4 shadow-sm sm:gap-5">
-              <div className="rounded-lg bg-[#fff3ea] p-2 text-[#e0854c]">
-                <Truck className="h-7 w-7" />
-              </div>
-
-              <div>
-                <p className="text-lg font-bold">50+</p>
-                <p className="text-[10px] font-semibold uppercase text-[#680818]">
-                  Regional Sort Hubs
-                </p>
-              </div>
-            </div>
-
-            <div className="flex items-center gap-3 rounded-lg bg-white p-4 shadow-sm sm:gap-5">
-              <div className="rounded-lg bg-[#eafcf8] p-2 text-teal-600">
-                <ShieldCheck className="h-7 w-7" />
-              </div>
-
-              <div>
-                <p className="text-lg font-bold">100%</p>
-                <p className="text-[10px] font-semibold uppercase text-[#680818]">
-                  Insured Safe Transit
-                </p>
-              </div>
-            </div>
-
-            <div className="flex items-center gap-3 rounded-lg bg-white p-4 shadow-sm sm:gap-5">
-              <div className="rounded-lg bg-[#f1efff] p-2 text-indigo-600">
-                <Headphones className="h-7 w-7" />
-              </div>
-
-              <div>
-                <p className="text-lg font-bold">24/7</p>
-                <p className="text-[10px] font-semibold uppercase text-[#680818]">
-                  Priority Hotline
-                </p>
-              </div>
-            </div>
 
           </div>
 
@@ -303,8 +240,8 @@ const Services = () => {
                   <div
                     key={item._id}
                     className={`relative flex flex-col rounded-xl border bg-white p-5 shadow-sm ${featured
-                        ? "border-[#680818] shadow-lg"
-                        : "border-gray-200"
+                      ? "border-[#680818] shadow-lg"
+                      : "border-gray-200"
                       }`}
                   >
                     {featured && (
@@ -333,14 +270,14 @@ const Services = () => {
 
                     <div
                       className={`mt-4 flex items-center gap-3 rounded-lg p-4 ${featured
-                          ? "bg-[#680818] text-white"
-                          : "bg-[#eef0ff]"
+                        ? "bg-[#680818] text-white"
+                        : "bg-[#eef0ff]"
                         }`}
                     >
                       <p
                         className={`text-2xl font-bold ${featured
-                            ? "text-white"
-                            : "text-gray-900"
+                          ? "text-white"
+                          : "text-gray-900"
                           }`}
                       >
                         {item.price}
@@ -348,8 +285,8 @@ const Services = () => {
 
                       <p
                         className={`text-[12px] ${featured
-                            ? "text-white/70"
-                            : "text-gray-700"
+                          ? "text-white/70"
+                          : "text-gray-700"
                           }`}
                       >
                         {item.priceLabel || "Service pricing"}
@@ -373,8 +310,8 @@ const Services = () => {
                     <Link
                       to="/shipment-request"
                       className={`mt-6 flex items-center justify-center rounded-lg px-4 py-3 text-sm font-bold ${featured
-                          ? "bg-[#680818] text-white"
-                          : "bg-[#eef0ff] text-[#680818]"
+                        ? "bg-[#680818] text-white"
+                        : "bg-[#eef0ff] text-[#680818]"
                         }`}
                     >
                       {getButtonText(item)}
@@ -389,7 +326,7 @@ const Services = () => {
         </div>
       </section>
 
-      <section className="bg-[#f1f3ff] px-5 py-14 sm:px-8 lg:px-12">
+      <section className="bg-[#f1f3ff] px-5 py-8 sm:px-8 lg:px-12">
         <div className="mx-auto max-w-7xl">
 
           <div className="flex flex-col gap-4 md:flex-row md:items-end md:justify-between">
@@ -673,8 +610,9 @@ const Services = () => {
       </section>
 
       <section className="px-5 pb-14 sm:px-8 lg:px-12">
-        <div className="mx-auto flex max-w-7xl flex-col gap-6 rounded-xl bg-[#680818] px-6 py-10 text-white shadow-lg sm:px-10 md:flex-row md:items-center md:justify-between">
+        <div className="mx-auto grid max-w-7xl items-center gap-8 overflow-hidden rounded-xl bg-[#680818] px-6 py-8 text-white shadow-lg sm:px-10 sm:py-10 md:grid-cols-[1.5fr_0.7fr]">
 
+          {/* Left Content */}
           <div className="max-w-2xl">
             <p className="text-[9px] font-bold uppercase tracking-wider text-[#f3b29b]">
               Rapid Enterprise Onboarding
@@ -682,9 +620,7 @@ const Services = () => {
 
             <h2 className="mt-2 text-3xl font-bold sm:text-4xl">
               Ready to Dispatch Your
-              <span className="block">
-                Consignment?
-              </span>
+              <span className="block">Consignment?</span>
             </h2>
 
             <p className="mt-3 max-w-xl text-xs leading-5 text-white/70">
@@ -696,22 +632,40 @@ const Services = () => {
             <div className="mt-6 flex flex-wrap gap-3">
               <Link
                 to="/shipment-request"
-                className="rounded-lg bg-white px-4 py-3 text-md font-bold text-[#680818]"
+                className="rounded-lg bg-white px-4 py-3 text-sm font-bold text-[#680818] transition hover:bg-rose-100"
               >
                 Request a Shipment Now
               </Link>
 
               <Link
                 to="/tracking"
-                className="rounded-lg border border-white/30 px-6 py-3 text-sm font-bold text-white"
+                className="rounded-lg border border-white/30 px-6 py-3 text-sm font-bold text-white transition hover:bg-white/10"
               >
                 Track Parcel
               </Link>
             </div>
           </div>
 
-          <div className="hidden text-white/10 md:block">
-            <Package className="h-36 w-36" />
+          {/* Right Illustration */}
+          <div className="relative hidden h-56 items-center justify-center md:flex">
+            <div className="absolute h-48 w-48 rounded-full border border-white/15 bg-white/5" />
+            <div className="absolute h-36 w-36 rounded-full border border-white/20" />
+
+            <div className="relative flex h-28 w-28 items-center justify-center rounded-3xl border border-white/20 bg-white/10 shadow-xl">
+              <Package className="h-20 w-20 text-[#ffd78c]" strokeWidth={1.4} />
+            </div>
+
+            <div className="absolute right-3 top-3 flex h-14 w-14 items-center justify-center rounded-2xl bg-white text-[#680818] shadow-lg">
+              <Truck className="h-8 w-8" />
+            </div>
+
+            <div className="absolute bottom-4 left-4 flex h-12 w-12 items-center justify-center rounded-2xl bg-[#ffd78c] text-[#680818] shadow-lg">
+              <MapPin className="h-6 w-6" />
+            </div>
+
+            <div className="absolute bottom-5 right-4 flex h-10 w-10 items-center justify-center rounded-full border-2 border-[#680818] bg-emerald-400 text-white shadow-lg">
+              <CheckCircle className="h-6 w-6" />
+            </div>
           </div>
 
         </div>
