@@ -47,17 +47,17 @@ function Navbar() {
             <div className="fixed top-0 z-50 w-full overflow-hidden bg-[#132142] py-2 text-xs text-white sm:text-sm">
                 <div className="flex w-max animate-[marquee_10s_linear_infinite]">
                     <div className="flex shrink-0 items-center gap-8 px-8">
-                        <span>🚚 Same-Day Dispatch Available</span>
-                        <span>📦 Track Your Shipment Anytime</span>
-                        <span>🌍 Domestic & Express Delivery</span>
-                        <span>🕐 Customer Support Available 24/7</span>
+                        <span> Same-Day Dispatch Available</span>
+                        <span> Track Your Shipment Anytime</span>
+                        <span> Domestic & Express Delivery</span>
+                        <span> Customer Support Available 24/7</span>
                     </div>
 
                     <div className="flex shrink-0 items-center gap-8 px-8">
-                        <span>🚚 Same-Day Dispatch Available</span>
-                        <span>📦 Track Your Shipment Anytime</span>
-                        <span>🌍 Domestic & Express Delivery</span>
-                        <span>🕐 Customer Support Available 24/7</span>
+                        <span> Same-Day Dispatch Available</span>
+                        <span> Track Your Shipment Anytime</span>
+                        <span> Domestic & Express Delivery</span>
+                        <span> Customer Support Available 24/7</span>
                     </div>
                 </div>
             </div>

@@ -6,6 +6,7 @@ import adminRoutes from './routes/adminRoutes.js';
 import shipmentRoutes from './routes/shipmentRoutes.js';
 import trackingRoutes from './routes/trackingRoutes.js';
 import serviceRoutes from "./routes/serviceRoutes.js";
+import galleryRoutes from "./routes/galleryRoutes.js";
 
 const app = express();
 
@@ -27,5 +28,6 @@ app.use("/api/v1/admin", adminRoutes);
 app.use("/api/v1/shipments", shipmentRoutes);
 app.use("/api/v1/tracking", trackingRoutes);
 app.use("/api/v1/services", serviceRoutes);
+app.use("/api/v1/gallery", galleryRoutes);
 
 export default app;
