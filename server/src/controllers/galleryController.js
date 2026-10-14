@@ -1,4 +1,3 @@
-
 import Gallery from "../models/Gallery.js";
 
 export const getGalleryItems = async (req, res) => {
@@ -19,7 +18,8 @@ export const getGalleryItems = async (req, res) => {
 
 export const addGalleryItem = async (req, res) => {
     try {
-        const { title, description, image } = req.body;
+        const { title, description } = req.body;
+        const image = req.file ? `/uploads/gallery/${req.file.filename}` : "";
 
         if (!title || !image) {
             return res.status(400).json({
