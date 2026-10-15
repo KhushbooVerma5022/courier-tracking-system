@@ -15,6 +15,8 @@ import Shipments from "./pages/admin/Shipments";
 import AdminLayout from "./components/admin/AdminLayout";
 import TrackingUpdates from "./pages/admin/TrackingUpdates";
 import ServicesManagement from "./pages/admin/ServicesManagement";
+import Gallery from "./pages/Gallery";
+import AdminGallery from "./pages/admin/AdminGallery";
 
 function AppContent() {
   const location = useLocation();
@@ -32,6 +34,8 @@ function AppContent() {
         <Route path="/about" element={<About />} />
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
+        <Route path="/gallery" element={<Gallery />} />
+
 
         <Route element={<ProtectedRoute />}>
           <Route path="/my-shipments" element={<MyShipments />} />
@@ -44,6 +48,7 @@ function AppContent() {
               <Route path="/admin/shipments" element={<Shipments />} />
               <Route path="/admin/tracking" element={<TrackingUpdates />} />
               <Route path="/admin/services" element={<ServicesManagement />} />
+              <Route path="/admin/gallery" element={<AdminGallery />} />
             </Route>
           </Route>
         </Route>

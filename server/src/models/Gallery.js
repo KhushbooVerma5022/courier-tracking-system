@@ -18,6 +18,11 @@ const gallerySchema = new mongoose.Schema(
       required: true,
       trim: true,
     },
+    category: {
+      type: String,
+      required: true,
+      enum: ["banner", "service", "company"],
+    },
     isActive: {
       type: Boolean,
       default: true,
