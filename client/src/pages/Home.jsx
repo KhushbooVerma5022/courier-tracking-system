@@ -61,6 +61,7 @@ const Home = () => {
   const reviewTrack = React.useRef(null);
   const reviewCards = React.useRef([]);
   const [activeReview, setActiveReview] = React.useState(0);
+  const [companyImage, setCompanyImage] = useState("");
 
   React.useEffect(() => {
     const track = reviewTrack.current;
@@ -83,6 +84,36 @@ const Home = () => {
 
     return () => clearInterval(interval);
   }, []);
+
+
+  useEffect(() => {
+    const fetchCompanyImage = async () => {
+      try {
+        const response = await fetch(
+          "http://localhost:5000/api/v1/gallery"
+        );
+
+        if (!response.ok) {
+          return;
+        }
+
+        const data = await response.json();
+
+        const image = (data.galleryItems || []).find(
+          (item) => item.category === "company" && item.isActive
+        );
+
+        if (image) {
+          setCompanyImage(`http://localhost:5000${image.image}`);
+        }
+      } catch (error) {
+        console.error("Error fetching company image:", error);
+      }
+    };
+
+    fetchCompanyImage();
+  }, []);
+
 
   return (
 
@@ -323,11 +354,13 @@ const Home = () => {
               <div className="flex h-full flex-col overflow-hidden rounded-2xl">
 
                 <div className="relative">
+
                   <img
-                    src="/images/HomeAdvantage.jpg"
+                    src={companyImage || "/images/HomeAdvantage.jpg"}
                     alt="Trackly logistics"
                     className="h-[280px] w-full object-cover sm:h-[300px]"
                   />
+
 
                   <div className="absolute inset-x-0 bottom-0 h-32 bg-gradient-to-t from-black/70 via-black/30 to-transparent" />
 

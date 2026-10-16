@@ -7,41 +7,42 @@ import {
   Package,
   ShieldCheck,
   Thermometer,
-  CheckCircle, 
+  CheckCircle,
   Truck,
   Warehouse,
 } from "lucide-react";
 import Footer from "../components/Footer";
 
+
 const logistics = [
   {
     image: "/images/temperature.png",
-    icon: <Thermometer className="h-4 w-4" />,
     title: "Temperature-Controlled",
+    icon: <Thermometer className="h-4 w-4" />,
     subtitle: "8 Pharmaceutical Shipments",
     text: "Validated insulated shipping with continuous temperature monitoring for sensitive cargo.",
     link: "View Cold Chain Protocols",
   },
   {
     image: "/images/high-value.png",
-    icon: <ShieldCheck className="h-4 w-4" />,
     title: "High-Value Secure Escort",
+    icon: <ShieldCheck className="h-4 w-4" />,
     subtitle: "Tamper-verified 24/7",
     text: "Secure, fully monitored transportation for valuable and sensitive shipments.",
     link: "Security Specs",
   },
   {
     image: "/images/same-day.png",
-    icon: <Truck className="h-4 w-4" />,
     title: "Same-Day Metro Courier",
+    icon: <Truck className="h-4 w-4" />,
     subtitle: "Point-to-point urban delivery",
     text: "Direct metropolitan delivery with dedicated local couriers and minute-level tracking.",
     link: "Urban Hub Coverage",
   },
   {
     image: "/images/warehouse.png",
-    icon: <Warehouse className="h-4 w-4" />,
     title: "Warehousing & Cross-Dock",
+    icon: <Warehouse className="h-4 w-4" />,
     subtitle: "Dedicated facilities",
     text: "Temporary inventory storage, pallet handling and rapid cross-dock operations.",
     link: "Depot Directory",
@@ -63,12 +64,14 @@ const Services = () => {
   const [services, setServices] = useState([]);
   const [servicesLoading, setServicesLoading] = useState(true);
   const [servicesError, setServicesError] = useState("");
+  const [galleryItems, setGalleryItems] = useState([]);
 
   const [origin, setOrigin] = useState("NY-10001");
   const [destination, setDestination] = useState("IL-60601");
   const [service, setService] = useState("");
   const [weight, setWeight] = useState("3");
   const [showPrice, setShowPrice] = useState(false);
+
 
   useEffect(() => {
     const fetchServices = async () => {
@@ -109,6 +112,34 @@ const Services = () => {
 
     fetchServices();
   }, []);
+
+
+  useEffect(() => {
+    const fetchGalleryItems = async () => {
+      try {
+        const response = await fetch(
+          "http://localhost:5000/api/v1/gallery"
+        );
+
+        if (!response.ok) {
+          return;
+        }
+
+        const data = await response.json();
+
+        setGalleryItems(
+          (data.galleryItems || []).filter(
+            (item) => item.category === "service" && item.isActive
+          )
+        );
+      } catch (error) {
+        console.error("Error fetching gallery images:", error);
+      }
+    };
+
+    fetchGalleryItems();
+  }, []);
+
 
   const selectedService = services.find(
     (item) => item.name === service
@@ -353,11 +384,26 @@ const Services = () => {
                 key={item.title}
                 className="overflow-hidden rounded-xl border border-gray-200 bg-white shadow-sm"
               >
+
                 <img
-                  src={item.image}
+                  src={
+                    galleryItems.find(
+                      (galleryItem) =>
+                        galleryItem.title.trim().toLowerCase() ===
+                        item.title.trim().toLowerCase()
+                    )?.image
+                      ? `http://localhost:5000${galleryItems.find(
+                        (galleryItem) =>
+                          galleryItem.title.trim().toLowerCase() ===
+                          item.title.trim().toLowerCase()
+                      ).image
+                      }`
+                      : item.image
+                  }
                   alt={item.title}
                   className="h-36 w-full object-cover"
                 />
+
 
                 <div className="p-4">
                   <div className="mb-3 flex h-8 w-8 items-center justify-center rounded-lg bg-[#fff0f2] text-[#680818]">

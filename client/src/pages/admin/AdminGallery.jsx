@@ -278,8 +278,8 @@ const AdminGallery = () => {
                                                 type="button"
                                                 onClick={() => handleStatusChange(item)}
                                                 className={`mt-2 w-full rounded-lg px-3 py-2 text-sm font-medium ${item.isActive
-                                                        ? "bg-amber-50 text-amber-700 hover:bg-amber-100"
-                                                        : "bg-green-50 text-green-700 hover:bg-green-100"
+                                                    ? "bg-amber-50 text-amber-700 hover:bg-amber-100"
+                                                    : "bg-green-50 text-green-700 hover:bg-green-100"
                                                     }`}
                                             >
                                                 {item.isActive ? "Deactivate" : "Activate"}
