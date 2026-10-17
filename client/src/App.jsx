@@ -17,6 +17,7 @@ import TrackingUpdates from "./pages/admin/TrackingUpdates";
 import ServicesManagement from "./pages/admin/ServicesManagement";
 import Gallery from "./pages/Gallery";
 import AdminGallery from "./pages/admin/AdminGallery";
+import PrivacyPolicy from "./pages/PrivacyPolicy";
 
 function AppContent() {
   const location = useLocation();
@@ -35,7 +36,7 @@ function AppContent() {
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
         <Route path="/gallery" element={<Gallery />} />
-
+        <Route path="/privacy-policy" element={<PrivacyPolicy />} />
 
         <Route element={<ProtectedRoute />}>
           <Route path="/my-shipments" element={<MyShipments />} />
