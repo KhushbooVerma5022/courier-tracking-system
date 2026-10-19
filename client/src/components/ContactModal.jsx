@@ -1,4 +1,3 @@
-
 import { X, Mail, Phone, Package, ArrowUpRight } from "lucide-react";
 
 const ContactModal = ({ isOpen, onClose }) => {

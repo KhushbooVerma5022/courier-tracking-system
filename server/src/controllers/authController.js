@@ -53,11 +53,10 @@ export const registerUser = async (req, res) => {
   }
 };
 
+
 export const loginUser = async (req, res) => {
   try {
     const { email, password } = req.body;
-
-    console.log("LOGIN EMAIL:", email);
 
     if (!email || !password) {
       return res.status(400).json({
@@ -66,9 +65,9 @@ export const loginUser = async (req, res) => {
       });
     }
 
-    const user = await User.findOne({ email });
+    const normalizedEmail = email.trim().toLowerCase();
 
-    console.log("USER FOUND:", !!user);
+    const user = await User.findOne({ email: normalizedEmail });
 
     if (!user) {
       return res.status(401).json({
@@ -77,19 +76,71 @@ export const loginUser = async (req, res) => {
       });
     }
 
+    const maxAttempts = 5;
+    const lockDuration = 15 * 60 * 1000; // 15 minutes
+    const now = new Date();
+
+    if (user.loginLockUntil && user.loginLockUntil > now) {
+      const remainingSeconds = Math.ceil(
+        (user.loginLockUntil.getTime() - now.getTime()) / 1000
+      );
+
+      return res.status(423).json({
+        success: false,
+        locked: true,
+        attemptsLeft: 0,
+        remainingSeconds,
+        message: "Too many failed login attempts. Please try again later.",
+      });
+    }
+
+    if (user.loginLockUntil && user.loginLockUntil <= now) {
+      user.loginFailedAttempts = 0;
+      user.loginLockUntil = null;
+    }
+
     const isPasswordValid = await bcrypt.compare(
       password,
       user.password
     );
 
-    console.log("PASSWORD MATCH:", isPasswordValid);
-
     if (!isPasswordValid) {
+      user.loginFailedAttempts += 1;
+
+      const attemptsLeft = Math.max(0, maxAttempts - user.loginFailedAttempts);
+
+      if (user.loginFailedAttempts >= maxAttempts) {
+        user.loginLockUntil = new Date(Date.now() + lockDuration);
+      }
+
+      await user.save();
+
+      if (user.loginLockUntil) {
+        const remainingSeconds = Math.ceil(
+          (user.loginLockUntil.getTime() - Date.now()) / 1000
+        );
+
+        return res.status(423).json({
+          success: false,
+          locked: true,
+          attemptsLeft: 0,
+          remainingSeconds,
+          message:
+            "Too many failed login attempts. Your account is locked for 15 minutes.",
+        });
+      }
+
       return res.status(401).json({
         success: false,
+        locked: false,
+        attemptsLeft,
         message: "Invalid email or password",
       });
     }
+
+    user.loginFailedAttempts = 0;
+    user.loginLockUntil = null;
+    await user.save();
 
     const token = jwt.sign(
       {
@@ -98,11 +149,11 @@ export const loginUser = async (req, res) => {
       },
       process.env.JWT_SECRET,
       {
-        expiresIn: "1d",
+        expiresIn: "1h",
       }
     );
 
-    res.status(200).json({
+    return res.status(200).json({
       success: true,
       message: "Login successful",
       token,
@@ -117,7 +168,7 @@ export const loginUser = async (req, res) => {
   } catch (error) {
     console.error("Login error:", error);
 
-    res.status(500).json({
+    return res.status(500).json({
       success: false,
       message: "Something went wrong while logging in",
     });

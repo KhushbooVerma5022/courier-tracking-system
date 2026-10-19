@@ -18,6 +18,8 @@ const Login = () => {
     });
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState("");
+    const [attemptsLeft, setAttemptsLeft] = useState(null);
+    const [remainingSeconds, setRemainingSeconds] = useState(0);
 
     const navigate = useNavigate();
 
@@ -57,8 +59,22 @@ const Login = () => {
 
             if (!response.ok) {
                 setError(data.message || "Login failed.");
+
+                if (typeof data.attemptsLeft === "number") {
+                    setAttemptsLeft(data.attemptsLeft);
+                }
+
+                if (data.locked) {
+                    setRemainingSeconds(data.remainingSeconds || 0);
+                } else {
+                    setRemainingSeconds(0);
+                }
+
                 return;
             }
+
+            setAttemptsLeft(null);
+            setRemainingSeconds(0);
 
             localStorage.setItem("token", data.token);
             localStorage.setItem("user", JSON.stringify(data.user));
@@ -95,12 +111,12 @@ const Login = () => {
                     </div>
 
                     {error && (
-                        <div className="mt-5 rounded-lg border border-red-100 bg-red-50 px-4 py-3 text-sm text-red-600">
+                        <div className="mt-3 rounded-lg border border-red-100 bg-red-50 px-4 py-1 text-sm text-red-600">
                             {error}
                         </div>
                     )}
 
-                    <form onSubmit={handleSubmit} className="mt-6 space-y-4">
+                    <form onSubmit={handleSubmit} className="mt-5 space-y-4">
 
                         <div>
                             <label
@@ -165,9 +181,22 @@ const Login = () => {
                             </div>
                         </div>
 
+                        {attemptsLeft !== null && attemptsLeft > 0 && (
+                            <p className="mt-2 text-sm text-red-600">
+                                You have {attemptsLeft} login attempts remaining.
+                            </p>
+                        )}
+
+                        {attemptsLeft === 0 && remainingSeconds > 0 && (
+                            <p className="mt-2 text-sm font-medium text-red-600">
+                                Account temporarily locked. Try again in{" "}
+                                {Math.ceil(remainingSeconds / 60)} minutes.
+                            </p>
+                        )}
+
                         <button
                             type="submit"
-                            disabled={loading}
+                            disabled={loading || remainingSeconds > 0}
                             className="flex w-full items-center justify-center gap-2 rounded-lg bg-[#680818] px-5 py-3 text-sm font-bold text-white transition hover:bg-[#500612] disabled:cursor-not-allowed disabled:opacity-60"
                         >
                             {loading ? "Signing In..." : "Sign In to Trackly"}
