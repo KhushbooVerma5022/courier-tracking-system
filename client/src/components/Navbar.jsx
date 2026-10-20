@@ -1,6 +1,17 @@
+
 import { useState, useEffect } from "react";
-import { NavLink, Link, useLocation } from "react-router-dom";
-import { Menu, X, Package } from "lucide-react";
+import {
+    NavLink,
+    Link,
+    useLocation,
+    useNavigate,
+} from "react-router-dom";
+import {
+    Menu,
+    X,
+    Package,
+    LogOut,
+} from "lucide-react";
 
 const getAuthInfo = () => {
     const token = localStorage.getItem("token");
@@ -19,7 +30,9 @@ const getAuthInfo = () => {
 function Navbar() {
     const [menuOpen, setMenuOpen] = useState(false);
     const [auth, setAuth] = useState(getAuthInfo);
+
     const location = useLocation();
+    const navigate = useNavigate();
 
     useEffect(() => {
         setAuth(getAuthInfo());
@@ -28,6 +41,16 @@ function Navbar() {
 
     const closeMenu = () => {
         setMenuOpen(false);
+    };
+
+    const handleLogout = () => {
+        localStorage.removeItem("token");
+        localStorage.removeItem("user");
+
+        setAuth({ token: null, role: "" });
+        setMenuOpen(false);
+
+        navigate("/");
     };
 
     const navClass = ({ isActive }) =>
@@ -41,6 +64,10 @@ function Navbar() {
             ? "text-[#6b0717]"
             : "text-gray-700 hover:text-[#6b0717]"
         }`;
+
+    const isLoggedIn = Boolean(auth.token);
+    const isCustomer = isLoggedIn && auth.role === "customer";
+    const isAdmin = isLoggedIn && auth.role === "admin";
 
     return (
         <>
@@ -64,6 +91,7 @@ function Navbar() {
 
             <nav className="fixed top-8 z-50 w-full bg-white shadow-sm">
                 <div className="mx-auto flex max-w-7xl items-center justify-between px-4 py-4 sm:px-6 lg:px-10">
+
                     <Link
                         to="/"
                         onClick={closeMenu}
@@ -105,13 +133,13 @@ function Navbar() {
                             Track Parcel
                         </NavLink>
 
-                        {auth.token && auth.role === "customer" && (
+                        {isCustomer && (
                             <NavLink to="/my-shipments" className={navClass}>
                                 My Shipments
                             </NavLink>
                         )}
 
-                        {auth.token && auth.role === "admin" && (
+                        {isAdmin && (
                             <NavLink to="/admin/dashboard" className={navClass}>
                                 Admin Dashboard
                             </NavLink>
@@ -119,35 +147,51 @@ function Navbar() {
                     </div>
 
                     <div className="hidden items-center gap-4 lg:flex">
-                        <NavLink to="/login" className={navClass}>
-                            Login
-                        </NavLink>
+                        {!isLoggedIn ? (
+                            <>
+                                <NavLink to="/login" className={navClass}>
+                                    Login
+                                </NavLink>
 
-                        <NavLink
-                            to="/register"
-                            className={({ isActive }) =>
-                                `rounded-full px-4 py-2 text-md font-semibold text-white transition ${isActive
-                                    ? "bg-[#6b0717]"
-                                    : "bg-[#680818] hover:bg-[#4f0612]"
-                                }`
-                            }
-                        >
-                            Register
-                        </NavLink>
+                                <NavLink
+                                    to="/register"
+                                    className={({ isActive }) =>
+                                        `rounded-full px-4 py-2 text-md font-semibold text-white transition ${isActive
+                                            ? "bg-[#6b0717]"
+                                            : "bg-[#680818] hover:bg-[#4f0612]"
+                                        }`
+                                    }
+                                >
+                                    Register
+                                </NavLink>
+                            </>
+                        ) : (
+                            <button
+                                type="button"
+                                onClick={handleLogout}
+                                className="inline-flex items-center gap-2 rounded-full bg-[#680818] px-4 py-2 text-sm font-semibold text-white transition hover:bg-[#4f0612]"
+                            >
+                                <LogOut className="h-4 w-4" />
+                                Logout
+                            </button>
+                        )}
                     </div>
 
                     <div className="flex items-center gap-2 lg:hidden">
-                        <NavLink
-                            to="/register"
-                            className={({ isActive }) =>
-                                `rounded-lg px-3 py-1.5 text-xs font-semibold text-white ${isActive
-                                    ? "bg-[#6b0717]"
-                                    : "bg-[#680818]"
-                                }`
-                            }
-                        >
-                            Register
-                        </NavLink>
+                        {!isLoggedIn && (
+                            <NavLink
+                                to="/register"
+                                onClick={closeMenu}
+                                className={({ isActive }) =>
+                                    `rounded-lg px-3 py-1.5 text-xs font-semibold text-white ${isActive
+                                        ? "bg-[#6b0717]"
+                                        : "bg-[#680818]"
+                                    }`
+                                }
+                            >
+                                Register
+                            </NavLink>
+                        )}
 
                         <button
                             type="button"
@@ -193,7 +237,7 @@ function Navbar() {
                                 Track Parcel
                             </NavLink>
 
-                            {auth.token && auth.role === "customer" && (
+                            {isCustomer && (
                                 <NavLink
                                     to="/my-shipments"
                                     onClick={closeMenu}
@@ -203,7 +247,7 @@ function Navbar() {
                                 </NavLink>
                             )}
 
-                            {auth.token && auth.role === "admin" && (
+                            {isAdmin && (
                                 <NavLink
                                     to="/admin/dashboard"
                                     onClick={closeMenu}
@@ -229,13 +273,24 @@ function Navbar() {
                                 About Us
                             </NavLink>
 
-                            <NavLink
-                                to="/login"
-                                onClick={closeMenu}
-                                className={mobileNavClass}
-                            >
-                                Login
-                            </NavLink>
+                            {!isLoggedIn ? (
+                                <NavLink
+                                    to="/login"
+                                    onClick={closeMenu}
+                                    className={mobileNavClass}
+                                >
+                                    Login
+                                </NavLink>
+                            ) : (
+                                <button
+                                    type="button"
+                                    onClick={handleLogout}
+                                    className="flex items-center gap-2 border-b border-gray-100 py-3 text-left text-sm font-semibold text-[#680818] transition hover:text-[#4f0612]"
+                                >
+                                    <LogOut className="h-4 w-4" />
+                                    Logout
+                                </button>
+                            )}
                         </div>
                     </div>
                 )}
