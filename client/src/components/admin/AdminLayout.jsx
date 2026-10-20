@@ -54,11 +54,11 @@ const menuSections = [
         ],
     },
     {
-        title: "USER MANAGEMENT",
+        title: "CUSTOMER  MANAGEMENT",
         items: [
             {
-                name: "Users",
-                path: "/admin/users",
+                name: "Customers",
+                path: "/admin/customers",
                 icon: Users,
             },
         ],

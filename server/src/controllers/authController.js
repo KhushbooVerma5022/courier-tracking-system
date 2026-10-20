@@ -228,3 +228,33 @@ export const getCustomerCount = async (req, res) => {
     });
   }
 };
+
+
+export const getAllUsers = async (req, res) => {
+  try {
+    if (req.user.role !== "admin") {
+      return res.status(403).json({
+        success: false,
+        message: "Admin access required",
+      });
+    }
+
+    const customers = await User.find({ role: "customer" })
+      .select("name email phone role createdAt")
+      .sort({ createdAt: -1 })
+      .lean();
+
+    return res.status(200).json({
+      success: true,
+      count: customers.length,
+      customers,
+    });
+  } catch (error) {
+    console.error("Get customers error:", error);
+
+    return res.status(500).json({
+      success: false,
+      message: "Unable to fetch customers",
+    });
+  }
+};

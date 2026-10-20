@@ -15,6 +15,7 @@ import Shipments from "./pages/admin/Shipments";
 import AdminLayout from "./components/admin/AdminLayout";
 import TrackingUpdates from "./pages/admin/TrackingUpdates";
 import ServicesManagement from "./pages/admin/ServicesManagement";
+import Customers from "./pages/admin/Customers";
 import Gallery from "./pages/Gallery";
 import AdminGallery from "./pages/admin/AdminGallery";
 import PrivacyPolicy from "./pages/PrivacyPolicy";
@@ -50,6 +51,7 @@ function AppContent() {
               <Route path="/admin/tracking" element={<TrackingUpdates />} />
               <Route path="/admin/services" element={<ServicesManagement />} />
               <Route path="/admin/gallery" element={<AdminGallery />} />
+              <Route path="/admin/customers" element={<Customers />} />
             </Route>
           </Route>
         </Route>
