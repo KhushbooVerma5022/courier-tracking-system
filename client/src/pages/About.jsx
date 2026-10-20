@@ -14,6 +14,7 @@ import {
 import { Link } from "react-router-dom";
 import Footer from "../components/Footer";
 import { useEffect, useState } from "react";
+import IndiaNetworkMap from "../components/IndiaNetworkMap";
 
 const pillars = [
     {
@@ -141,106 +142,67 @@ const About = () => {
 
 
     return (
-        <div className="min-h-screen bg-[#faf8fc] pt-[120px] text-[#24151a]">
+        <div className="min-h-screen bg-[#faf8fc] pt-[80px] text-[#24151a]">
 
-            <section className="px-5 py-6 sm:px-8 lg:px-12">
-                <div className="mx-auto max-w-7xl">
 
-                    <div className="grid gap-8 lg:grid-cols-[1.4fr_0.6fr] lg:items-center">
+            <section className="relative isolate overflow-hidden px-5 py-16 sm:px-8 sm:py-10 lg:px-12">
+                <div className="absolute inset-0 -z-10 bg-gradient-to-br from-[#fff7f8] via-white to-[#ffe9ed]" />
 
-                        <div>
-                            <span className="inline-flex rounded-full bg-[#ffe9ed] px-3 py-2 text-[12px] font-bold uppercase tracking-wider text-[#680818]">
-                                About Trackly Logistics & Expedited Courier
-                            </span>
+                <div className="absolute -left-24 top-10 -z-10 h-64 w-64 rounded-full bg-[#680818]/10 blur-3xl" />
 
-                            <h1 className="mt-5 max-w-3xl text-3xl font-bold leading-tight text-[#680818] sm:text-4xl">
-                                Architecting the Next Era of Precision Logistics
+                <div className="absolute -right-20 bottom-0 -z-10 h-72 w-72 rounded-full bg-rose-300/20 blur-3xl" />
 
-                            </h1>
+                <div className="mx-auto max-w-4xl text-center">
+                    <h1 className="mx-auto mt-6 max-w-3xl text-3xl font-extrabold leading-tight tracking-tight text-[#680818] sm:text-4xl lg:text-5xl">
+                        Architecting the Next Era of{" "}
+                        <span className="bg-gradient-to-r from-[#680818] via-[#a51c39] to-[#d45b72] bg-clip-text text-transparent">
+                            Precision Logistics
+                        </span>
+                    </h1>
 
-                            <p className="mt-4 max-w-2xl text-md leading-6 text-gray-500">
-                                Founded on the principle of zero-discrepancy transit,
-                                TRACKLY blends proprietary fleet telemetry, national
-                                operational standards, and dedicated courier networks
-                                to deliver reliable shipment visibility.
-                            </p>
-                        </div>
+                    {/* <p className="mx-auto mt-5 max-w-2xl text-sm leading-7 text-gray-600 sm:text-base">
+                        Founded on the principle of zero-discrepancy transit,
+                        TRACKLY combines organized operations, shipment visibility,
+                        and dedicated courier networks to help deliver a reliable
+                        shipping experience from pickup to delivery.
+                    </p> */}
 
-                        <div className="rounded-xl border border-gray-200 bg-white p-5 shadow-sm">
-                            <div className="flex items-start gap-3">
-                                <div className="rounded-lg bg-[#680818] p-3 text-white">
-                                    <ShieldCheck className="h-5 w-5" />
-                                </div>
+                    <div className="group relative mx-auto mt-10 max-w-2xl cursor-default overflow-hidden rounded-2xl border border-white/70 bg-white/80 p-6 text-left shadow-[0_15px_50px_rgba(104,8,24,0.10)] backdrop-blur-md transition-all duration-500 hover:-translate-y-2 hover:border-[#680818]/20 hover:shadow-[0_25px_60px_rgba(104,8,24,0.18)] sm:p-8">
+                        <div className="pointer-events-none absolute -right-16 -top-16 h-48 w-48 rounded-full bg-rose-200/40 blur-3xl transition-all duration-500 group-hover:scale-150 group-hover:bg-rose-300/50" />
 
-                                <div>
-                                    <p className="text-[10px] font-bold uppercase text-gray-400">
-                                        Operational Standard
-                                    </p>
-
-                                    <h3 className="text-md font-bold text-gray-900">
-                                        Zero-Discrepancy Manifest
-                                    </h3>
-                                </div>
+                        <div className="relative flex flex-col items-center gap-5 sm:flex-row sm:items-start">
+                            <div className="flex h-16 w-16 shrink-0 items-center justify-center rounded-2xl bg-gradient-to-br from-[#680818] to-[#a51c39] text-white shadow-lg shadow-[#680818]/20 transition-transform duration-500 group-hover:rotate-6 group-hover:scale-110">
+                                <ShieldCheck className="h-8 w-8" />
                             </div>
 
-                            <p className="mt-3 text-[14px] leading-5 text-gray-500">
-                                Every shipment is processed through structured
-                                operational controls designed for reliable handling
-                                and visibility.
-                            </p>
+                            <div className="flex-1 text-center sm:text-left">
+                                <p className="text-xs font-bold uppercase tracking-[0.18em] text-[#a51c39]">
+                                    Our Commitment
+                                </p>
+
+                                <h2 className="mt-2 text-xl font-bold text-gray-900 sm:text-2xl">
+                                    Reliable Handling. Clear Visibility.
+                                </h2>
+
+                                <p className="mt-3 text-sm leading-6 text-gray-600">
+                                    Every shipment deserves careful handling and clear
+                                    tracking information. Our focus is on making the
+                                    delivery journey easier to follow and simpler to manage.
+                                </p>
+                            </div>
                         </div>
 
+                        <div className="mt-6 h-1 w-16 rounded-full bg-gradient-to-r from-[#680818] to-[#ffb05d] transition-all duration-500 group-hover:w-full" />
                     </div>
 
-                    <div className="mt-8 grid grid-cols-2 gap-2 rounded-xl bg-[#202a43] p-4 text-white sm:grid-cols-4">
-
-                        <div className="border-b border-white/10 p-3 sm:border-b-0 sm:border-r">
-                            <p className="text-[12px] font-semibold uppercase text-[#ffe9ed]">
-                                Annual Volume
-                            </p>
-                            <p className="text-3xl font-bold">
-                                2.4M+
-                            </p>
-                            <p className="text-[12px] text-white/60">
-                                Packages Handled Annually
-                            </p>
-                        </div>
-
-                        <div className="border-b border-white/10 p-3 sm:border-b-0 sm:border-r">
-                            <p className="text-[12px] font-semibold uppercase text-[#ffe9ed]">
-                                Infrastructure
-                            </p>
-                            <p className="text-3xl font-bold">
-                                50+
-                            </p>
-                            <p className="text-[12px] font-semibold text-white/60">
-                                Regional Sort Hubs
-                            </p>
-                        </div>
-
-                        <div className="border-b border-white/10 p-3 sm:border-b-0 sm:border-r">
-                            <p className="text-[12px] font-semibold uppercase text-[#ffe9ed]">
-                                Precision SLA
-                            </p>
-                            <p className="text-3xl font-bold text-[#ffb05d]">
-                                99.94%
-                            </p>
-                            <p className="text-[12px] text-white/60">
-                                On-Time Service Window
-                            </p>
-                        </div>
-
-                        <div className="p-3">
-                            <p className="text-[12px] font-semibold uppercase text-[#ffe9ed]">
-                                Network Throughput
-                            </p>
-                            <p className="text-3xl font-bold">
-                                180+
-                            </p>
-                            <p className="text-[12px] text-white/60">
-                                Dedicated Route Corridors
-                            </p>
-                        </div>
+                    <div className="mt-8 items-center justify-center gap-4">
+                        <a
+                            href="/tracking"
+                            className="inline-flex items-center justify-center gap-2 rounded-lg bg-[#680818] px-6 py-3 text-sm font-bold text-white shadow-md shadow-[#680818]/20 transition duration-300 hover:-translate-y-1 hover:bg-[#500612] hover:shadow-lg"
+                        >
+                            Track Your Shipment
+                            <ArrowRight className="h-4 w-4" />
+                        </a>
 
                     </div>
                 </div>
@@ -312,7 +274,7 @@ const About = () => {
                             />
 
 
-                            <div className="h-30 mt-4 rounded-lg bg-white p-4 shadow-sm">
+                            <div className="h-32 mt-4 rounded-lg bg-white p-4 shadow-sm">
                                 <p className="text-[16px] font-semibold text-[#680818]">
                                     ORD_CROSSDOCK_01
                                 </p>
@@ -350,60 +312,6 @@ const About = () => {
                 </div>
             </section>
 
-            <section className="bg-[#f0f2ff] px-5 py-12 sm:px-8 lg:px-12">
-                <div className="mx-auto max-w-7xl">
-
-                    <div className="flex flex-col justify-between gap-3 md:flex-row md:items-end">
-                        <div>
-                            <p className="text-[12px] font-bold uppercase tracking-widest text-[#680818]">
-                                Operating Principles
-                            </p>
-
-                            <h2 className="mt-1 text-4xl font-semibold">
-                                The Three Pillars of the TRACKLY Standard
-                            </h2>
-                        </div>
-
-                        <p className="max-w-md text-md leading-5 text-gray-500">
-                            Every policy, corridor investment and line of tracking
-                            code is shaped by our commitment to uncompromising
-                            industrial excellence.
-                        </p>
-                    </div>
-
-                    <div className="mt-7 grid gap-4 md:grid-cols-3">
-                        {pillars.map((pillar) => (
-                            <div
-                                key={pillar.title}
-                                className="rounded-xl bg-white p-5 shadow-sm"
-                            >
-                                <div className="flex h-12 w-12 items-center justify-center rounded-lg bg-[#fff0f2] text-[#680818]">
-                                    {pillar.icon}
-                                </div>
-
-                                <p className="mt-5 text-[11px] font-bold uppercase text-[#CC770A]">
-                                    {pillar.label}
-                                </p>
-
-                                <h3 className="mt-1 text-xl font-semibold">
-                                    {pillar.title}
-                                </h3>
-
-                                <p className="mt-2 text-[15px] leading-5 text-gray-500">
-                                    {pillar.text}
-                                </p>
-
-                                <div className="mt-5 rounded-lg bg-[#f7f7fc] px-3 py-2 text-[12px] text-black">
-                                    <Check className="mr-1 inline h-3 w-3 text-[#680818]" />
-                                    {pillar.footer}
-                                </div>
-                            </div>
-                        ))}
-                    </div>
-
-                </div>
-            </section>
-
             <section className="px-5 py-12 sm:px-8 lg:px-12">
                 <div className="mx-auto max-w-7xl">
 
@@ -435,11 +343,7 @@ const About = () => {
                             </div>
 
                             <div className="relative h-72 overflow-hidden bg-[#e5eaf3]">
-                                <img
-                                    src="/images/AboutusMap.png"
-                                    alt="Trackly logistics network"
-                                    className="h-full w-full object-cover"
-                                />
+                                <IndiaNetworkMap />
                             </div>
 
                             <div className="grid grid-cols-3 border-t border-gray-100">
