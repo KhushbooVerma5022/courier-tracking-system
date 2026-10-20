@@ -342,7 +342,7 @@ const About = () => {
                                 </p>
                             </div>
 
-                            <div className="relative h-72 overflow-hidden bg-[#e5eaf3]">
+                            <div className="relative isolate z-0 h-72 overflow-hidden bg-[#e5eaf3]">
                                 <IndiaNetworkMap />
                             </div>
 
