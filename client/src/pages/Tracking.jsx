@@ -1,6 +1,6 @@
 import { useState } from "react";
+import ContactModal from "../components/ContactModal";
 import {
-    CalendarDays,
     Check,
     CheckCircle2,
     ChevronRight,
@@ -20,6 +20,7 @@ const Tracking = () => {
     const [trackingUpdates, setTrackingUpdates] = useState([]);
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState("");
+    const [isContactOpen, setIsContactOpen] = useState(false);
 
     const handleSearch = async (e) => {
         e.preventDefault();
@@ -386,34 +387,6 @@ const Tracking = () => {
                             </div>
 
                             <aside className="space-y-5 lg:sticky lg:top-[140px] lg:self-start">
-                                <section className="rounded-xl bg-white p-5 shadow-sm">
-                                    <div className="flex items-center gap-2">
-                                        <Truck className="h-4 w-4 text-[#680818]" />
-
-                                        <h2 className="text-lg font-bold">
-                                            Shipment Actions
-                                        </h2>
-                                    </div>
-
-                                    <p className="mt-2 text-[13px] leading-5 text-gray-500">
-                                        Need help with your shipment? You can contact
-                                        our support team.
-                                    </p>
-
-                                    <div className="mt-5 space-y-2">
-                                        <ActionButton
-                                            icon={<Headphones />}
-                                            title="Contact Support"
-                                            text="Get help with your shipment"
-                                        />
-
-                                        <ActionButton
-                                            icon={<CalendarDays />}
-                                            title="Delivery Information"
-                                            text="Check your expected delivery"
-                                        />
-                                    </div>
-                                </section>
 
                                 <section className="rounded-xl bg-white p-5 shadow-sm">
                                     <div className="flex items-center gap-2">
@@ -465,10 +438,15 @@ const Tracking = () => {
                                         our support team is here to help.
                                     </p>
 
-                                    <button className="mt-4 flex w-full items-center justify-center gap-2 rounded-lg bg-[#680818] py-2.5 text-[13px] font-bold text-white transition hover:bg-[#500612]">
+                                    <button
+                                        type="button"
+                                        onClick={() => setIsContactOpen(true)}
+                                        className="mt-4 flex w-full items-center justify-center gap-2 rounded-lg bg-[#680818] py-2.5 text-[13px] font-bold text-white transition hover:bg-[#500612]"
+                                    >
                                         <Phone className="h-3 w-3" />
                                         Contact Support
                                     </button>
+
                                 </section>
                             </aside>
                         </div>
@@ -477,6 +455,10 @@ const Tracking = () => {
             </main>
 
             <Footer />
+            <ContactModal
+                isOpen={isContactOpen}
+                onClose={() => setIsContactOpen(false)}
+            />
         </div>
     );
 };
@@ -504,8 +486,8 @@ const LocationCard = ({ title, name, location, dark }) => {
         <div className="flex items-center gap-3 rounded-lg bg-[#eef0ff] p-3">
             <div
                 className={`flex h-9 w-9 shrink-0 items-center justify-center rounded-full ${dark
-                        ? "bg-[#680818] text-white"
-                        : "bg-white text-[#680818]"
+                    ? "bg-[#680818] text-white"
+                    : "bg-white text-[#680818]"
                     }`}
             >
                 <MapPin className="h-4 w-4" />
@@ -545,10 +527,10 @@ const Milestone = ({ title, date, active, current }) => {
         <div className="relative z-10 flex flex-col items-center text-center">
             <div
                 className={`flex h-10 w-10 items-center justify-center rounded-full border-4 border-white ${current
-                        ? "bg-[#e0854c] text-white shadow-[0_0_0_2px_#e0854c]"
-                        : active
-                            ? "bg-[#680818] text-white"
-                            : "bg-[#eef0ff] text-gray-400"
+                    ? "bg-[#e0854c] text-white shadow-[0_0_0_2px_#e0854c]"
+                    : active
+                        ? "bg-[#680818] text-white"
+                        : "bg-[#eef0ff] text-gray-400"
                     }`}
             >
                 {current ? (

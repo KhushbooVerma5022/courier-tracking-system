@@ -15,7 +15,6 @@ const ContactModal = ({ isOpen, onClose }) => {
                 className="relative w-full max-w-md rounded-2xl bg-[#faf9f7] p-6 shadow-2xl sm:p-8"
                 onClick={(e) => e.stopPropagation()}
             >
-                {/* Close Button */}
                 <button
                     type="button"
                     onClick={onClose}
@@ -25,12 +24,10 @@ const ContactModal = ({ isOpen, onClose }) => {
                     <X size={21} />
                 </button>
 
-                {/* Logo */}
                 <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-[#680818] text-white">
                     <Package size={25} />
                 </div>
 
-                {/* Heading */}
                 <p className="mt-6 text-xs font-bold uppercase tracking-[0.2em] text-[#6b0717]">
                     TRACKLY Support
                 </p>
@@ -49,7 +46,6 @@ const ContactModal = ({ isOpen, onClose }) => {
 
                 <div className="my-6 border-t border-gray-200" />
 
-                {/* Email */}
                 <a
                     href="mailto:support@trackly.com"
                     className="group flex items-center gap-4 rounded-xl p-3 transition hover:bg-[#fff0f2]"
@@ -73,7 +69,6 @@ const ContactModal = ({ isOpen, onClose }) => {
                     />
                 </a>
 
-                {/* Phone */}
                 <div className="mt-2 flex items-center gap-4 rounded-xl p-3">
                     <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-[#fff0f2] text-[#680818]">
                         <Phone size={21} />
@@ -89,7 +84,6 @@ const ContactModal = ({ isOpen, onClose }) => {
                     </div>
                 </div>
 
-                {/* Footer */}
                 <div className="mt-6 border-t border-gray-200 pt-5">
                     <p className="text-xs tracking-widest text-gray-500">
                         TRACKLY · SHIP. TRACK. DELIVER.
