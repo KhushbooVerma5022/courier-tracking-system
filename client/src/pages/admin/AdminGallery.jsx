@@ -269,9 +269,9 @@ const AdminGallery = () => {
                                             <button
                                                 type="button"
                                                 onClick={() => handleDelete(item._id)}
-                                                className="mt-4 rounded-lg border border-red-200 px-3 py-2 text-sm font-medium text-red-600 transition hover:bg-red-50"
+                                                className="mt-4 w-full rounded-lg border border-red-200 px-3 py-2 text-sm font-medium text-red-600 transition hover:bg-red-50"
                                             >
-                                                Delete Image
+                                                Delete
                                             </button>
 
                                             <button

@@ -8,6 +8,8 @@ import {
     UserCircle,
     LogOut,
     ChevronRight,
+    Menu,
+    X,
 } from "lucide-react";
 import { useState } from "react";
 import { Outlet, useLocation, useNavigate } from "react-router-dom";
@@ -67,6 +69,7 @@ const menuSections = [
 
 function AdminLayout() {
     const [showLogoutModal, setShowLogoutModal] = useState(false);
+    const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
     const navigate = useNavigate();
     const location = useLocation();
@@ -80,12 +83,9 @@ function AdminLayout() {
 
     return (
         <div className="flex h-screen overflow-hidden bg-[#f8f7fc]">
-
             <aside className="hidden h-screen w-64 shrink-0 flex-col bg-[#132142] text-white lg:flex">
-
                 <div className="border-b border-white/10 px-5 py-5">
                     <div className="flex items-center gap-3">
-
                         <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-white">
                             <Package className="h-5 w-5 text-[#132142]" />
                         </div>
@@ -99,23 +99,17 @@ function AdminLayout() {
                                 ADMIN PANEL
                             </p>
                         </div>
-
                     </div>
                 </div>
 
-                <div className="flex-1 px-3 py-2">
-
+                <div className="flex-1 overflow-y-auto px-3 py-2">
                     {menuSections.map((section) => (
-                        <div
-                            key={section.title}
-                            className="mb-6"
-                        >
+                        <div key={section.title} className="mb-6">
                             <p className="mb-2 px-3 text-[10px] font-bold tracking-wider text-white/40">
                                 {section.title}
                             </p>
 
                             <div className="space-y-1">
-
                                 {section.items.map((item) => {
                                     const Icon = item.icon;
                                     const active =
@@ -124,53 +118,48 @@ function AdminLayout() {
                                     return (
                                         <button
                                             key={item.name}
+                                            type="button"
                                             onClick={() =>
                                                 navigate(item.path)
                                             }
-                                            className={`group flex w-full items-center justify-between rounded-lg px-3 py-2.5 text-left transition ${active
+                                            className={`group flex w-full items-center justify-between rounded-lg px-3 py-2.5 text-left transition ${
+                                                active
                                                     ? "bg-white text-[#132142]"
                                                     : "text-white/70 hover:bg-white/10 hover:text-white"
-                                                }`}
+                                            }`}
                                         >
                                             <div className="flex items-center gap-3">
-
                                                 <Icon
-                                                    className={`h-5 w-5 ${active
+                                                    className={`h-5 w-5 ${
+                                                        active
                                                             ? "text-[#132142]"
                                                             : "text-white/60 group-hover:text-white"
-                                                        }`}
+                                                    }`}
                                                 />
 
                                                 <span className="text-sm font-semibold">
                                                     {item.name}
                                                 </span>
-
                                             </div>
 
                                             {active && (
                                                 <ChevronRight className="h-4 w-4" />
                                             )}
-
                                         </button>
                                     );
                                 })}
-
                             </div>
                         </div>
                     ))}
-
                 </div>
 
                 <div className="border-t border-white/10 p-3">
-
                     <div className="flex items-center gap-3 rounded-lg bg-white/10 p-3">
-
                         <div className="flex h-9 w-9 items-center justify-center rounded-full bg-white/15">
                             <UserCircle className="h-5 w-5" />
                         </div>
 
                         <div className="min-w-0 flex-1">
-
                             <p className="truncate text-sm font-semibold">
                                 Admin
                             </p>
@@ -178,36 +167,183 @@ function AdminLayout() {
                             <p className="truncate text-[11px] text-white/50">
                                 Administrator
                             </p>
-
                         </div>
 
                         <button
-                            onClick={() =>
-                                setShowLogoutModal(true)
-                            }
+                            type="button"
+                            onClick={() => setShowLogoutModal(true)}
+                            aria-label="Logout"
                             className="text-white/50 transition hover:text-white"
                         >
                             <LogOut className="h-5 w-5" />
                         </button>
-
                     </div>
-
                 </div>
-
             </aside>
 
-            <main className="min-w-0 flex-1 overflow-y-auto">
-                <Outlet />
-            </main>
+            <div className="flex min-w-0 flex-1 flex-col overflow-hidden">
+                <header className="flex shrink-0 items-center justify-between border-b border-gray-200 bg-white px-4 py-3 lg:hidden">
+                    <div className="flex items-center gap-2">
+                        <div className="flex h-9 w-9 items-center justify-center rounded-lg bg-[#132142]">
+                            <Package className="h-5 w-5 text-white" />
+                        </div>
+
+                        <div>
+                            <h1 className="text-base font-bold tracking-wide text-[#132142]">
+                                TRACK<span className="text-[#E0854C]">LY</span>
+                            </h1>
+
+                            <p className="text-[9px] font-bold tracking-widest text-gray-500">
+                                ADMIN PANEL
+                            </p>
+                        </div>
+                    </div>
+
+                    <button
+                        type="button"
+                        onClick={() => setMobileMenuOpen(true)}
+                        aria-label="Open admin menu"
+                        aria-expanded={mobileMenuOpen}
+                        className="flex h-10 w-10 items-center justify-center rounded-lg border border-gray-200 text-[#132142] transition hover:bg-gray-100"
+                    >
+                        <Menu className="h-5 w-5" />
+                    </button>
+                </header>
+
+                <main className="min-h-0 min-w-0 flex-1 overflow-x-hidden overflow-y-auto">
+                    <Outlet />
+                </main>
+            </div>
+
+            {mobileMenuOpen && (
+                <div
+                    className="fixed inset-0 z-[60] bg-black/50 lg:hidden"
+                    onClick={() => setMobileMenuOpen(false)}
+                >
+                    <aside
+                        className="flex h-full w-64 max-w-[85vw] flex-col bg-[#132142] text-white shadow-2xl"
+                        onClick={(e) => e.stopPropagation()}
+                    >
+                        <div className="flex items-center justify-between border-b border-white/10 px-5 py-5">
+                            <div className="flex items-center gap-3">
+                                <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-white">
+                                    <Package className="h-5 w-5 text-[#132142]" />
+                                </div>
+
+                                <div>
+                                    <h1 className="text-lg font-bold tracking-wide">
+                                        TRACK<span className="text-[#E0854C]">LY</span>
+                                    </h1>
+
+                                    <p className="text-[10px] font-medium tracking-widest text-white/60">
+                                        ADMIN PANEL
+                                    </p>
+                                </div>
+                            </div>
+
+                            <button
+                                type="button"
+                                onClick={() => setMobileMenuOpen(false)}
+                                aria-label="Close admin menu"
+                                className="flex h-9 w-9 items-center justify-center rounded-lg text-white/70 transition hover:bg-white/10 hover:text-white"
+                            >
+                                <X className="h-5 w-5" />
+                            </button>
+                        </div>
+
+                        <div className="flex-1 overflow-y-auto px-3 py-4">
+                            {menuSections.map((section) => (
+                                <div
+                                    key={section.title}
+                                    className="mb-6"
+                                >
+                                    <p className="mb-2 px-3 text-[10px] font-bold tracking-wider text-white/40">
+                                        {section.title}
+                                    </p>
+
+                                    <div className="space-y-1">
+                                        {section.items.map((item) => {
+                                            const Icon = item.icon;
+                                            const active =
+                                                location.pathname === item.path;
+
+                                            return (
+                                                <button
+                                                    key={item.name}
+                                                    type="button"
+                                                    onClick={() => {
+                                                        navigate(item.path);
+                                                        setMobileMenuOpen(false);
+                                                    }}
+                                                    className={`group flex w-full items-center justify-between rounded-lg px-3 py-2.5 text-left transition ${
+                                                        active
+                                                            ? "bg-white text-[#132142]"
+                                                            : "text-white/70 hover:bg-white/10 hover:text-white"
+                                                    }`}
+                                                >
+                                                    <div className="flex items-center gap-3">
+                                                        <Icon
+                                                            className={`h-5 w-5 ${
+                                                                active
+                                                                    ? "text-[#132142]"
+                                                                    : "text-white/60 group-hover:text-white"
+                                                            }`}
+                                                        />
+
+                                                        <span className="text-sm font-semibold">
+                                                            {item.name}
+                                                        </span>
+                                                    </div>
+
+                                                    {active && (
+                                                        <ChevronRight className="h-4 w-4" />
+                                                    )}
+                                                </button>
+                                            );
+                                        })}
+                                    </div>
+                                </div>
+                            ))}
+                        </div>
+
+                        <div className="border-t border-white/10 p-3">
+                            <div className="flex items-center gap-3 rounded-lg bg-white/10 p-3">
+                                <div className="flex h-9 w-9 items-center justify-center rounded-full bg-white/15">
+                                    <UserCircle className="h-5 w-5" />
+                                </div>
+
+                                <div className="min-w-0 flex-1">
+                                    <p className="truncate text-sm font-semibold">
+                                        Admin
+                                    </p>
+
+                                    <p className="truncate text-[11px] text-white/50">
+                                        Administrator
+                                    </p>
+                                </div>
+
+                                <button
+                                    type="button"
+                                    onClick={() => {
+                                        setMobileMenuOpen(false);
+                                        setShowLogoutModal(true);
+                                    }}
+                                    aria-label="Logout"
+                                    className="text-white/50 transition hover:text-white"
+                                >
+                                    <LogOut className="h-5 w-5" />
+                                </button>
+                            </div>
+                        </div>
+                    </aside>
+                </div>
+            )}
 
             {showLogoutModal && (
-                <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/50 px-4">
-
+                <div className="fixed inset-0 z-[70] flex items-center justify-center bg-black/50 px-4">
                     <div className="w-full max-w-md rounded-2xl bg-white p-6 shadow-2xl">
-
                         <div className="flex items-center gap-3">
-
-                            <div className="flex h-11 w-11 items-center justify-center rounded-full bg-red-100">
+                            <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full bg-red-100">
                                 <LogOut className="h-5 w-5 text-red-600" />
                             </div>
 
@@ -220,34 +356,28 @@ function AdminLayout() {
                                     Are you sure you want to logout from the admin panel?
                                 </p>
                             </div>
-
                         </div>
 
-                        <div className="mt-6 flex justify-end gap-3">
-
+                        <div className="mt-6 flex flex-col-reverse justify-end gap-3 sm:flex-row">
                             <button
-                                onClick={() =>
-                                    setShowLogoutModal(false)
-                                }
+                                type="button"
+                                onClick={() => setShowLogoutModal(false)}
                                 className="rounded-lg border border-gray-300 px-4 py-2.5 text-sm font-semibold text-gray-700 transition hover:bg-gray-100"
                             >
                                 Cancel
                             </button>
 
                             <button
+                                type="button"
                                 onClick={handleLogout}
                                 className="rounded-lg bg-[#6b0717] px-4 py-2.5 text-sm font-semibold text-white transition hover:bg-[#4f0714]"
                             >
                                 Logout
                             </button>
-
                         </div>
-
                     </div>
-
                 </div>
             )}
-
         </div>
     );
 }
